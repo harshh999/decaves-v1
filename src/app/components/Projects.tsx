@@ -10,25 +10,32 @@ import { siteImage } from "@/data/images";
 
 const projects = [
   {
-    title: "Spinal Stone",
-    location: "Vadodara",
+    title: "Project One",
+    location: "India",
     year: "2026",
-    image: siteImage("/our_projects_1.webp"),
-    href: "/spaces/spinal-stone",
+    image: siteImage("/Our_Project_p1/image_1.webp"),
+    href: "/spaces/our-project-p1",
   },
   {
-    title: "The Walnut Residence",
-    location: "Vadodara",
+    title: "Project Two",
+    location: "India",
     year: "2026",
-    image: siteImage("Ankur's-villa/ANKUR'S-VILLA/BPD_1134.webp"),
-    href: "/spaces/ankur-bhai",
+    image: siteImage("/Our_Project_p2/image_1.webp"),
+    href: "/spaces/our-project-p2",
   },
   {
-    title: "The Ivory House",
-    location: "Vadodara",
+    title: "Project Three",
+    location: "India",
     year: "2026",
-    image: siteImage("/Biren's Villa/image_1.webp"),
-    href: "/spaces/birens-villa",
+    image: siteImage("/Our_Project_p3/image_1.webp"),
+    href: "/spaces/our-project-p3",
+  },
+  {
+    title: "Project Four",
+    location: "India",
+    year: "2026",
+    image: siteImage("/Our_Project_p4/image_1.webp"),
+    href: "/spaces/our-project-p4",
   },
 ];
 

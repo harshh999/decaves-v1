@@ -246,6 +246,68 @@ export const projects: Project[] = [
     ],
     curations: [],
   },
+  {
+    slug: "our-project-p1",
+    title: "Project One",
+    location: "India",
+    heroImage: cld("Our_Project_p1", "image_1.webp"),
+    description:
+      "A space designed with intention and elegance, where every detail serves a purpose. The interplay of light, texture, and form creates an environment that feels both refined and deeply comfortable.",
+    interiorImages: [
+      cld("Our_Project_p1", "image_2.webp"),
+      cld("Our_Project_p1", "image_3.webp"),
+      cld("Our_Project_p1", "image_4.webp"),
+      cld("Our_Project_p1", "image_5.webp"),
+      cld("Our_Project_p1", "image_6.webp"),
+    ],
+    curations: [],
+  },
+  {
+    slug: "our-project-p2",
+    title: "Project Two",
+    location: "India",
+    heroImage: cld("Our_Project_p2", "image_1.webp"),
+    description:
+      "A space designed with intention and elegance, where every detail serves a purpose. The interplay of light, texture, and form creates an environment that feels both refined and deeply comfortable.",
+    interiorImages: [
+      cld("Our_Project_p2", "image_2.webp"),
+      cld("Our_Project_p2", "image_3.webp"),
+      cld("Our_Project_p2", "image_4.webp"),
+      cld("Our_Project_p2", "image_5.webp"),
+      cld("Our_Project_p2", "image_6.webp"),
+    ],
+    curations: [],
+  },
+  {
+    slug: "our-project-p3",
+    title: "Project Three",
+    location: "India",
+    heroImage: cld("Our_Project_p3", "image_1.webp"),
+    description:
+      "A space designed with intention and elegance, where every detail serves a purpose. The interplay of light, texture, and form creates an environment that feels both refined and deeply comfortable.",
+    interiorImages: [
+      cld("Our_Project_p3", "image_2.webp"),
+      cld("Our_Project_p3", "image_3.webp"),
+      cld("Our_Project_p3", "image_4.webp"),
+    ],
+    curations: [],
+  },
+  {
+    slug: "our-project-p4",
+    title: "Project Four",
+    location: "India",
+    heroImage: cld("Our_Project_p4", "image_1.webp"),
+    description:
+      "A space designed with intention and elegance, where every detail serves a purpose. The interplay of light, texture, and form creates an environment that feels both refined and deeply comfortable.",
+    interiorImages: [
+      cld("Our_Project_p4", "image_2.webp"),
+      cld("Our_Project_p4", "image_3.webp"),
+      cld("Our_Project_p4", "image_4.webp"),
+      cld("Our_Project_p4", "image_5.webp"),
+      cld("Our_Project_p4", "image_6.webp"),
+    ],
+    curations: [],
+  },
 ];
 
 export function getProjectBySlug(slug: string) {

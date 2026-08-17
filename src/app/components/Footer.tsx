@@ -60,7 +60,7 @@ export default function Footer() {
       <div className="relative w-full h-[50vh] md:h-[72vh] overflow-hidden select-none pointer-events-none">
         {/* Full Bleed Image */}
         <Image
-          src="/images/footer/footer-architecture.png"
+          src="/images/footer/footer-architecture.webp"
           alt="De'Caves premium architectural project exterior"
           fill
           sizes="100vw"
