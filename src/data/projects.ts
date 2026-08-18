@@ -32,23 +32,140 @@ function rootFile(file: string) {
 
 export const projects: Project[] = [
   {
-    slug: "spinal-stone",
-    title: "Spinal Stone",
-    location: "Vadodara",
-    area: "12,000 sqft.",
-    client: "Mr Ramakanth",
-    heroImage: cld("SPINAL STONE-20260721", "SPINAL STONE", "11.webp"),
+    slug: "our-project-p2",
+    title: "Project Two",
+    location: "India",
+    heroImage: cld("Our_Project_p2", "image_1.webp"),
     description:
-      "A stunning vision of modern architecture, this space captures the essence of tranquility and functionality. Natural light cascades through expansive windows, highlighting the bespoke finishes and natural textures woven seamlessly throughout the environment. It is a quiet escape meant to rejuvenate the spirit and inspire the mind.",
+      "A space designed with intention and elegance, where every detail serves a purpose. The interplay of light, texture, and form creates an environment that feels both refined and deeply comfortable.",
     interiorImages: [
-      cld("SPINAL STONE-20260721", "SPINAL STONE", "15.webp"),
-      cld("SPINAL STONE-20260721", "SPINAL STONE", "18.webp"),
-      cld("SPINAL STONE-20260721", "SPINAL STONE", "20.webp"),
-      cld("SPINAL STONE-20260721", "SPINAL STONE", "22.webp"),
-      cld("SPINAL STONE-20260721", "SPINAL STONE", "26.webp"),
-      cld("SPINAL STONE-20260721", "SPINAL STONE", "27.webp"),
-      cld("SPINAL STONE-20260721", "SPINAL STONE", "29.webp"),
-      cld("SPINAL STONE-20260721", "SPINAL STONE", "30a.webp"),
+      cld("Our_Project_p2", "image_2.webp"),
+      cld("Our_Project_p2", "image_3.webp"),
+      cld("Our_Project_p2", "image_4.webp"),
+      cld("Our_Project_p2", "image_5.webp"),
+      cld("Our_Project_p2", "image_6.webp"),
+    ],
+    curations: [],
+  },
+  {
+    slug: "our-project-p3",
+    title: "Project Three",
+    location: "India",
+    heroImage: cld("Our_Project_p3", "image_1.webp"),
+    description:
+      "A space designed with intention and elegance, where every detail serves a purpose. The interplay of light, texture, and form creates an environment that feels both refined and deeply comfortable.",
+    interiorImages: [
+      cld("Our_Project_p3", "image_2.webp"),
+      cld("Our_Project_p3", "image_3.webp"),
+      cld("Our_Project_p3", "image_4.webp"),
+    ],
+    curations: [],
+  },
+  {
+    slug: "our-project-p1",
+    title: "Project One",
+    location: "India",
+    heroImage: cld("Our_Project_p1", "image_1.webp"),
+    description:
+      "A space designed with intention and elegance, where every detail serves a purpose. The interplay of light, texture, and form creates an environment that feels both refined and deeply comfortable.",
+    interiorImages: [
+      cld("Our_Project_p1", "image_2.webp"),
+      cld("Our_Project_p1", "image_3.webp"),
+      cld("Our_Project_p1", "image_4.webp"),
+      cld("Our_Project_p1", "image_5.webp"),
+      cld("Our_Project_p1", "image_6.webp"),
+    ],
+    curations: [],
+  },
+  {
+    slug: "our-project-p4",
+    title: "Project Four",
+    location: "India",
+    heroImage: cld("Our_Project_p4", "image_1.webp"),
+    description:
+      "A space designed with intention and elegance, where every detail serves a purpose. The interplay of light, texture, and form creates an environment that feels both refined and deeply comfortable.",
+    interiorImages: [
+      cld("Our_Project_p4", "image_2.webp"),
+      cld("Our_Project_p4", "image_3.webp"),
+      cld("Our_Project_p4", "image_4.webp"),
+      cld("Our_Project_p4", "image_5.webp"),
+      cld("Our_Project_p4", "image_6.webp"),
+    ],
+    curations: [],
+  },
+  {
+    slug: "sama-residence",
+    title: "Sama Residence",
+    location: "India",
+    heroImage: cld("sama residence", "IMG_1607.webp"),
+    description:
+      "A space designed with intention and elegance, where every detail serves a purpose. The interplay of light, texture, and form creates an environment that feels both refined and deeply comfortable.",
+    interiorImages: [
+      cld("sama residence", "IMG_1621.webp"),
+      cld("sama residence", "IMG_1623.webp"),
+      cld("sama residence", "IMG_1627.webp"),
+      cld("sama residence", "IMG_1628.webp"),
+      cld("sama residence", "IMG_1629.webp"),
+    ],
+    curations: [],
+  },
+  {
+    slug: "birens-villa",
+    title: "The Ivory House",
+    location: "Vadodara",
+    heroImage: cld("Biren's Villa", "image_1.webp"),
+    description:
+      "A distinctive residence shaped around light, scale, and the rhythm of everyday living. Generous volumes and carefully curated textures come together to create a home that feels both grounded and effortlessly elegant.",
+    interiorImages: [
+      cld("Biren's Villa", "image_2.webp"),
+      cld("Biren's Villa", "image_3.webp"),
+      cld("Biren's Villa", "image_4.webp"),
+      cld("Biren's Villa", "image_5.webp"),
+      cld("Biren's Villa", "image_6.webp"),
+      cld("Biren's Villa", "image_7.webp"),
+    ],
+    curations: [],
+  },
+  {
+    slug: "unknown",
+    title: "Unknown",
+    location: "India",
+    heroImage: cld("unknown", "10a20530-5bea-4898-b7be-a5a093f59533.webp"),
+    description:
+      "A space designed with intention and elegance, where every detail serves a purpose. The interplay of light, texture, and form creates an environment that feels both refined and deeply comfortable.",
+    interiorImages: [
+      cld("unknown", "12dafd73-05c5-4c2b-84af-db7e7b1e3f30.webp"),
+      cld("unknown", "534a5811-c20b-4863-ae99-c1a0151f1a14.webp"),
+      cld("unknown", "6cfd58ea-c2e5-4593-a36b-edc0ad0b2a4f.webp"),
+      cld("unknown", "911d2000-05d9-4c5b-b2d0-8686dae670e1.webp"),
+    ],
+    curations: [],
+  },
+  {
+    slug: "karelibaug",
+    title: "Karelibaug",
+    location: "India",
+    heroImage: cld("karelibaug", "7210a478-ec5e-4eea-a9f1-e99411c290b2.webp"),
+    description:
+      "A space designed with intention and elegance, where every detail serves a purpose. The interplay of light, texture, and form creates an environment that feels both refined and deeply comfortable.",
+    interiorImages: [
+      cld("karelibaug", "72b09f90-b46d-4ef5-9aa2-9fabed44401f.webp"),
+      cld("karelibaug", "af660f91-2908-44b1-86c4-956b3dea21d1.webp"),
+      cld("karelibaug", "fb6de847-3f37-4543-87bb-1d717b8c7cfc.webp"),
+    ],
+    curations: [],
+  },
+  {
+    slug: "kolhapur",
+    title: "Kolhapur",
+    location: "India",
+    heroImage: cld("kolhapur", "40cc7527-beb5-448f-8fe0-36044e29fd9d.webp"),
+    description:
+      "A space designed with intention and elegance, where every detail serves a purpose. The interplay of light, texture, and form creates an environment that feels both refined and deeply comfortable.",
+    interiorImages: [
+      cld("kolhapur", "50ff5272-b0b8-4412-bf31-5a461466cedd.webp"),
+      cld("kolhapur", "5e25c365-fb4d-4063-a64d-a2340cf0295b.webp"),
+      cld("kolhapur", "b2055604-9676-466a-a033-81e2d51516a7.webp"),
     ],
     curations: [],
   },
@@ -98,213 +215,6 @@ export const projects: Project[] = [
       cld("Anhaya Store, Kolhapur", "Anhaya Store, Kolhapur (A+I)", "Photoshoot", "2.webp"),
       cld("Anhaya Store, Kolhapur", "Anhaya Store, Kolhapur (A+I)", "Photoshoot", "2B.webp"),
       cld("Anhaya Store, Kolhapur", "Anhaya Store, Kolhapur (A+I)", "Photoshoot", "3.webp"),
-    ],
-    curations: [],
-  },
-  {
-    slug: "suramya-altis",
-    title: "Shah's Dream Home",
-    location: "Vadodara",
-    area: "6,800 sqft.",
-    heroImage: cld(
-      "Shah's Dream Home, Suramya Altis (I)-20260721",
-      "Shah_s Dream Home, Suramya Altis (I)",
-      "PHOTOGRAPHS",
-      "LR_MKGs-10.webp"
-    ),
-    description:
-      "Designed for generations, this home embodies the essence of togetherness, tranquility, and contemporary living. Every space is crafted to nurture relationships, celebrate everyday moments, and create a lasting sense of belonging.",
-    interiorImages: [
-      cld("Shah's Dream Home, Suramya Altis (I)-20260721", "Shah_s Dream Home, Suramya Altis (I)", "PHOTOGRAPHS", "LR_MKGs-11.webp"),
-      cld("Shah's Dream Home, Suramya Altis (I)-20260721", "Shah_s Dream Home, Suramya Altis (I)", "PHOTOGRAPHS", "LR_MKGs-13.webp"),
-      cld("Shah's Dream Home, Suramya Altis (I)-20260721", "Shah_s Dream Home, Suramya Altis (I)", "PHOTOGRAPHS", "LR_MKGs-14.webp"),
-      cld("Shah's Dream Home, Suramya Altis (I)-20260721", "Shah_s Dream Home, Suramya Altis (I)", "PHOTOGRAPHS", "LR_MKGs-15.webp"),
-      cld("Shah's Dream Home, Suramya Altis (I)-20260721", "Shah_s Dream Home, Suramya Altis (I)", "PHOTOGRAPHS", "LR_MKGs-16.webp"),
-      cld("Shah's Dream Home, Suramya Altis (I)-20260721", "Shah_s Dream Home, Suramya Altis (I)", "PHOTOGRAPHS", "LR_MKGs-18.webp"),
-      cld("Shah's Dream Home, Suramya Altis (I)-20260721", "Shah_s Dream Home, Suramya Altis (I)", "PHOTOGRAPHS", "LR_MKGs-20.webp"),
-      cld("Shah's Dream Home, Suramya Altis (I)-20260721", "Shah_s Dream Home, Suramya Altis (I)", "PHOTOGRAPHS", "LR_MKGs-21.webp"),
-    ],
-    curations: [],
-  },
-  {
-    slug: "colortek-bhayli",
-    title: "The Surface Lab",
-    location: "Vadodara",
-    area: "8,000 sqft.",
-    heroImage: cld(
-      "Colortek, Bhayli (I)-20260721T150227Z-1-001",
-      "Colortek, Bhayli (I)",
-      "PHOTOGRAPHS",
-      "DSC_7984.webp"
-    ),
-    description:
-      "An industrial-commercial space transformed through thoughtful architecture. Function meets aesthetics in a design that prioritizes workflow efficiency without compromising on visual identity.",
-    interiorImages: [
-      cld("Colortek, Bhayli (I)-20260721T150227Z-1-001", "Colortek, Bhayli (I)", "PHOTOGRAPHS", "DSC_8011.webp"),
-      cld("Colortek, Bhayli (I)-20260721T150227Z-1-001", "Colortek, Bhayli (I)", "PHOTOGRAPHS", "DSC_8012.webp"),
-      cld("Colortek, Bhayli (I)-20260721T150227Z-1-001", "Colortek, Bhayli (I)", "PHOTOGRAPHS", "DSC_8018.webp"),
-      cld("Colortek, Bhayli (I)-20260721T150227Z-1-001", "Colortek, Bhayli (I)", "PHOTOGRAPHS", "DSC_8044.webp"),
-      cld("Colortek, Bhayli (I)-20260721T150227Z-1-001", "Colortek, Bhayli (I)", "PHOTOGRAPHS", "DSC_8063.webp"),
-      cld("Colortek, Bhayli (I)-20260721T150227Z-1-001", "Colortek, Bhayli (I)", "PHOTOGRAPHS", "DSC_8070.webp"),
-      cld("Colortek, Bhayli (I)-20260721T150227Z-1-001", "Colortek, Bhayli (I)", "PHOTOGRAPHS", "DSC_8083.webp"),
-      cld("Colortek, Bhayli (I)-20260721T150227Z-1-001", "Colortek, Bhayli (I)", "PHOTOGRAPHS", "DSC_8088.webp"),
-    ],
-    curations: [],
-  },
-  {
-    slug: "panchal-residence-sama",
-    title: "The Brick Wave",
-    location: "Sama, Vadodara",
-    area: "3,600 sqft.",
-    heroImage: cld(
-      "Panchal's Residence, Sama (A+I)-20260721",
-      "Panchal_s Residence, Sama (A+I)",
-      "PHOTOSHOOT",
-      "DSC_9340 [Desktop Resolution].webp"
-    ),
-    description:
-      "A warm family home where every corner tells a story. Designed for multi-generational living, the residence balances privacy with togetherness through carefully planned zones and intimate gathering spaces.",
-    interiorImages: [
-      cld("Panchal's Residence, Sama (A+I)-20260721", "Panchal_s Residence, Sama (A+I)", "PHOTOSHOOT", "DSC_9346 [Desktop Resolution].webp"),
-      cld("Panchal's Residence, Sama (A+I)-20260721", "Panchal_s Residence, Sama (A+I)", "PHOTOSHOOT", "DSC_9355 [Desktop Resolution].webp"),
-      cld("Panchal's Residence, Sama (A+I)-20260721", "Panchal_s Residence, Sama (A+I)", "PHOTOSHOOT", "DSC_9359 [Desktop Resolution].webp"),
-      cld("Panchal's Residence, Sama (A+I)-20260721", "Panchal_s Residence, Sama (A+I)", "PHOTOSHOOT", "DSC_9523 [Desktop Resolution].webp"),
-      cld("Panchal's Residence, Sama (A+I)-20260721", "Panchal_s Residence, Sama (A+I)", "RENDERS", "B4.webp"),
-    ],
-    curations: [],
-  },
-  {
-    slug: "thavrani-residence",
-    title: "A Sky-high Retreat",
-    location: "Hyderabad, India",
-    heroImage: cld(
-      "Thavrani's Residence (I)-20260721",
-      "Thavrani_s Residence (I)",
-      "RENDERS",
-      "cats area",
-      "1.webp"
-    ),
-    description:
-      "A thoughtfully designed home that reflects the personality and lifestyle of its inhabitants. Clean lines, warm materials, and a seamless indoor-outdoor connection define this contemporary residence.",
-    interiorImages: [
-      cld("Thavrani's Residence (I)-20260721", "Thavrani_s Residence (I)", "RENDERS", "cats area", "2.webp"),
-      cld("Thavrani's Residence (I)-20260721", "Thavrani_s Residence (I)", "RENDERS", "5. FF DAUGHTERS BEDROOM", "OP 1", "1.webp"),
-      cld("Thavrani's Residence (I)-20260721", "Thavrani_s Residence (I)", "RENDERS", "5. FF DAUGHTERS BEDROOM", "OP 1", "4.webp"),
-    ],
-    curations: [],
-  },
-  {
-    slug: "arpita-sidhhpura",
-    title: "The Living Composition",
-    location: "Vadodara",
-    heroImage: cld(
-      "ARPITA SIDHHPURA-20260721T150020Z-1-001",
-      "ARPITA SIDHHPURA",
-      "1 (10).webp"
-    ),
-    description:
-      "A space designed with intention and elegance, where every detail serves a purpose. The interplay of light, texture, and form creates an environment that feels both luxurious and deeply comfortable.",
-    interiorImages: [
-      cld("ARPITA SIDHHPURA-20260721T150020Z-1-001", "ARPITA SIDHHPURA", "1 (11).webp"),
-      cld("ARPITA SIDHHPURA-20260721T150020Z-1-001", "ARPITA SIDHHPURA", "1 (12).webp"),
-      cld("ARPITA SIDHHPURA-20260721T150020Z-1-001", "ARPITA SIDHHPURA", "1 (14).webp"),
-      cld("ARPITA SIDHHPURA-20260721T150020Z-1-001", "ARPITA SIDHHPURA", "1 (17).webp"),
-      cld("ARPITA SIDHHPURA-20260721T150020Z-1-001", "ARPITA SIDHHPURA", "1 (19).webp"),
-      cld("ARPITA SIDHHPURA-20260721T150020Z-1-001", "ARPITA SIDHHPURA", "1 (22).webp"),
-    ],
-    curations: [],
-  },
-  {
-    slug: "cafe-lemon",
-    title: "Cafe Lemon",
-    location: "Hyderabad, India",
-    heroImage: cld("Cafe Lemon", "image_1.webp"),
-    description:
-      "A warm, inviting café designed around light, texture, and the joy of gathering. Every corner is composed to make long conversations feel effortless.",
-    interiorImages: [
-      cld("Cafe Lemon", "image_2.webp"),
-      cld("Cafe Lemon", "image_3.webp"),
-      cld("Cafe Lemon", "image_4.webp"),
-      cld("Cafe Lemon", "image_5.webp"),
-    ],
-    curations: [],
-  },
-  {
-    slug: "birens-villa",
-    title: "The Ivory House",
-    location: "Vadodara",
-    heroImage: cld("Biren's Villa", "image_1.webp"),
-    description:
-      "A distinctive residence shaped around light, scale, and the rhythm of everyday living. Generous volumes and carefully curated textures come together to create a home that feels both grounded and effortlessly elegant.",
-    interiorImages: [
-      cld("Biren's Villa", "image_2.webp"),
-      cld("Biren's Villa", "image_3.webp"),
-      cld("Biren's Villa", "image_4.webp"),
-      cld("Biren's Villa", "image_5.webp"),
-      cld("Biren's Villa", "image_6.webp"),
-      cld("Biren's Villa", "image_7.webp"),
-    ],
-    curations: [],
-  },
-  {
-    slug: "our-project-p1",
-    title: "Project One",
-    location: "India",
-    heroImage: cld("Our_Project_p1", "image_1.webp"),
-    description:
-      "A space designed with intention and elegance, where every detail serves a purpose. The interplay of light, texture, and form creates an environment that feels both refined and deeply comfortable.",
-    interiorImages: [
-      cld("Our_Project_p1", "image_2.webp"),
-      cld("Our_Project_p1", "image_3.webp"),
-      cld("Our_Project_p1", "image_4.webp"),
-      cld("Our_Project_p1", "image_5.webp"),
-      cld("Our_Project_p1", "image_6.webp"),
-    ],
-    curations: [],
-  },
-  {
-    slug: "our-project-p2",
-    title: "Project Two",
-    location: "India",
-    heroImage: cld("Our_Project_p2", "image_1.webp"),
-    description:
-      "A space designed with intention and elegance, where every detail serves a purpose. The interplay of light, texture, and form creates an environment that feels both refined and deeply comfortable.",
-    interiorImages: [
-      cld("Our_Project_p2", "image_2.webp"),
-      cld("Our_Project_p2", "image_3.webp"),
-      cld("Our_Project_p2", "image_4.webp"),
-      cld("Our_Project_p2", "image_5.webp"),
-      cld("Our_Project_p2", "image_6.webp"),
-    ],
-    curations: [],
-  },
-  {
-    slug: "our-project-p3",
-    title: "Project Three",
-    location: "India",
-    heroImage: cld("Our_Project_p3", "image_1.webp"),
-    description:
-      "A space designed with intention and elegance, where every detail serves a purpose. The interplay of light, texture, and form creates an environment that feels both refined and deeply comfortable.",
-    interiorImages: [
-      cld("Our_Project_p3", "image_2.webp"),
-      cld("Our_Project_p3", "image_3.webp"),
-      cld("Our_Project_p3", "image_4.webp"),
-    ],
-    curations: [],
-  },
-  {
-    slug: "our-project-p4",
-    title: "Project Four",
-    location: "India",
-    heroImage: cld("Our_Project_p4", "image_1.webp"),
-    description:
-      "A space designed with intention and elegance, where every detail serves a purpose. The interplay of light, texture, and form creates an environment that feels both refined and deeply comfortable.",
-    interiorImages: [
-      cld("Our_Project_p4", "image_2.webp"),
-      cld("Our_Project_p4", "image_3.webp"),
-      cld("Our_Project_p4", "image_4.webp"),
-      cld("Our_Project_p4", "image_5.webp"),
-      cld("Our_Project_p4", "image_6.webp"),
     ],
     curations: [],
   },

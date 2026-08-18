@@ -10,13 +10,6 @@ import { siteImage } from "@/data/images";
 
 const projects = [
   {
-    title: "Project One",
-    location: "India",
-    year: "2026",
-    image: siteImage("/Our_Project_p1/image_1.webp"),
-    href: "/spaces/our-project-p1",
-  },
-  {
     title: "Project Two",
     location: "India",
     year: "2026",
@@ -24,17 +17,17 @@ const projects = [
     href: "/spaces/our-project-p2",
   },
   {
-    title: "Project Three",
+    title: "Project One",
     location: "India",
     year: "2026",
-    image: siteImage("/Our_Project_p3/image_1.webp"),
-    href: "/spaces/our-project-p3",
+    image: siteImage("/Our_Project_p1/image_4.webp"),
+    href: "/spaces/our-project-p1",
   },
   {
     title: "Project Four",
     location: "India",
     year: "2026",
-    image: siteImage("/Our_Project_p4/image_1.webp"),
+    image: siteImage("/Our_Project_p4/image_6.webp"),
     href: "/spaces/our-project-p4",
   },
 ];
