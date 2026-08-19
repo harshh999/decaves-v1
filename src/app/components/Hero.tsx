@@ -18,7 +18,6 @@ export default function Hero() {
 
   const containerRef = useRef<HTMLElement>(null);
   const bgRef = useRef<HTMLDivElement>(null);
-  const metadataRef = useRef<HTMLDivElement>(null);
   const headlineRef = useRef<HTMLHeadingElement>(null);
   const descriptionRef = useRef<HTMLParagraphElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
@@ -29,7 +28,7 @@ export default function Hero() {
       const tl = gsap.timeline();
 
       // Ensure elements are hidden before animation starts
-      gsap.set([metadataRef.current, headlineRef.current, descriptionRef.current, ctaRef.current], {
+      gsap.set([headlineRef.current, descriptionRef.current, ctaRef.current], {
         opacity: 0,
         y: 30,
       });
@@ -41,12 +40,6 @@ export default function Hero() {
         { scale: 1, duration: 2.4, ease: "power2.out" }
       );
 
-      // Hero Metadata
-      tl.to(
-        metadataRef.current,
-        { opacity: 1, y: 0, duration: 1.2, ease: "power3.out" },
-        0.45
-      );
 
       // Headline
       tl.to(
@@ -167,30 +160,6 @@ export default function Hero() {
       <div className="relative z-20 flex flex-col items-center justify-center min-h-screen w-full px-6 py-20 text-center">
         <div className="flex flex-col items-center max-w-[1100px] w-full space-y-8 md:space-y-12">
           
-          {/* Labels Group */}
-          <div ref={metadataRef} className="space-y-3">
-            <span 
-              className="block text-[14px] uppercase tracking-[0.4em] font-body"
-              style={{
-                color: "#FAF8F5",
-                opacity: 0.70,
-                textShadow: "0px 2px 18px rgba(0,0,0,0.28)"
-              }}
-            >
-              SINCE 1986
-            </span>
-            <span 
-              className="block font-serif italic text-[20px] md:text-[24px]"
-              style={{
-                color: "#FAF8F5",
-                opacity: 0.75,
-                textShadow: "0px 2px 18px rgba(0,0,0,0.28)"
-              }}
-            >
-              Vadodara • Gujarat
-            </span>
-          </div>
-
           {/* Main Title */}
           <h1 
             ref={headlineRef}

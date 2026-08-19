@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 import CloudinaryImage from "./CloudinaryImage";
 import { siteImage } from "@/data/images";
 
@@ -42,35 +43,29 @@ export default function Header() {
         className="flex w-full max-w-[900px] items-center justify-between rounded-full px-5 transition-all duration-[600ms] ease-[cubic-bezier(0.25,1,0.5,1)] md:px-8"
         style={{
           height: scrolled ? "56px" : "74px",
-          background: scrolled
-            ? "rgba(26, 21, 18, 0.62)"
-            : "rgba(26, 21, 18, 0.14)",
-          backdropFilter: scrolled ? "blur(18px)" : "blur(12px)",
-          WebkitBackdropFilter: scrolled ? "blur(18px)" : "blur(12px)",
-          border: scrolled
-            ? "1px solid rgba(255, 255, 255, 0.10)"
-            : "1px solid rgba(255, 255, 255, 0.03)",
-          boxShadow: scrolled
-            ? "0 8px 32px rgba(0, 0, 0, 0.12)"
-            : "none",
+          background: "#FFFFFF",
+          opacity: 1,
+          backdropFilter: "none",
+          WebkitBackdropFilter: "none",
+          border: "1px solid rgba(0,0,0,0.08)",
+          boxShadow: scrolled ? "0 4px 20px rgba(0,0,0,0.06)" : "none",
         }}
       >
         <div className="flex flex-1 justify-start">
           <Link
             href="/"
-            className="flex select-none items-center justify-center transition-all duration-[400ms] ease-out hover:opacity-90"
-            style={{
-              height: scrolled ? "38px" : "50px",
-              width: scrolled ? "38px" : "50px",
-            }}
+            className="flex select-none items-center justify-start transition-all duration-[400ms] ease-out hover:opacity-90 pl-1 md:pl-4"
           >
-            <CloudinaryImage
-              src={siteImage("/De'Caves_logo.webp")}
-              alt="De'Caves"
-              width={72}
-              height={72}
-              className="h-full w-full object-contain"
-            />
+            <div className={`relative transition-all duration-[400ms] ease-[cubic-bezier(0.25,1,0.5,1)] ${scrolled ? 'w-[110px] md:w-[130px]' : 'w-[130px] md:w-[160px]'}`}>
+              <Image
+                src="/decaves-wordmark.png"
+                alt="De'Caves"
+                width={2532}
+                height={567}
+                className="w-full h-auto object-contain"
+                priority
+              />
+            </div>
           </Link>
         </div>
 
@@ -79,7 +74,7 @@ export default function Header() {
             <Link
               key={link.href}
               href={link.href}
-              className="text-[14px] font-medium tracking-[0.15em] text-white uppercase transition-opacity duration-[250ms] ease-out hover:opacity-100"
+              className="text-[14px] font-medium tracking-[0.15em] text-[#171717] uppercase transition-opacity duration-[250ms] ease-out hover:opacity-100"
               style={{ opacity: activeHref === link.href ? 1 : 0.6 }}
             >
               {link.label}
@@ -91,7 +86,7 @@ export default function Header() {
           <div className="hidden md:block">
             <Link
               href="/#contact"
-              className="inline-block rounded-full border border-white/20 bg-white/5 px-6 py-2.5 text-[13px] font-medium tracking-[0.1em] text-white uppercase transition-all duration-[400ms] ease-[cubic-bezier(0.25,1,0.5,1)] hover:bg-white/15 hover:border-white/40 active:scale-[0.98]"
+              className="inline-block rounded-full border border-black/20 bg-transparent px-6 py-2.5 text-[13px] font-medium tracking-[0.1em] text-[#171717] uppercase transition-all duration-[400ms] ease-[cubic-bezier(0.25,1,0.5,1)] hover:bg-black/5 hover:border-black/40 active:scale-[0.98]"
             >
               Contact Us
             </Link>
@@ -100,7 +95,7 @@ export default function Header() {
           <div className="md:hidden">
             <Link
               href="/#contact"
-              className="inline-block rounded-full border border-white/20 bg-white/5 px-4 py-2 text-[12px] font-medium tracking-[0.1em] text-white uppercase transition-all duration-[400ms] ease-[cubic-bezier(0.25,1,0.5,1)] hover:bg-white/15"
+              className="inline-block rounded-full border border-black/20 bg-transparent px-4 py-2 text-[12px] font-medium tracking-[0.1em] text-[#171717] uppercase transition-all duration-[400ms] ease-[cubic-bezier(0.25,1,0.5,1)] hover:bg-black/5 hover:border-black/40"
             >
               Contact Us
             </Link>

@@ -32,9 +32,25 @@ function rootFile(file: string) {
 
 export const projects: Project[] = [
   {
+    slug: "our-project-p1",
+    title: "The Hanging Pyramids",
+    location: "Vadodara",
+    heroImage: cld("Our_Project_p1", "image_1.webp"),
+    description:
+      "A space designed with intention and elegance, where every detail serves a purpose. The interplay of light, texture, and form creates an environment that feels both refined and deeply comfortable.",
+    interiorImages: [
+      cld("Our_Project_p1", "image_2.webp"),
+      cld("Our_Project_p1", "image_3.webp"),
+      cld("Our_Project_p1", "image_4.webp"),
+      cld("Our_Project_p1", "image_5.webp"),
+      cld("Our_Project_p1", "image_6.webp"),
+    ],
+    curations: [],
+  },
+  {
     slug: "our-project-p2",
-    title: "Project Two",
-    location: "India",
+    title: "Villa Hacienda",
+    location: "Sherkhi, Vadodara",
     heroImage: cld("Our_Project_p2", "image_1.webp"),
     description:
       "A space designed with intention and elegance, where every detail serves a purpose. The interplay of light, texture, and form creates an environment that feels both refined and deeply comfortable.",
@@ -49,8 +65,8 @@ export const projects: Project[] = [
   },
   {
     slug: "our-project-p3",
-    title: "Project Three",
-    location: "India",
+    title: "The Floating Boxes",
+    location: "Vadodara",
     heroImage: cld("Our_Project_p3", "image_1.webp"),
     description:
       "A space designed with intention and elegance, where every detail serves a purpose. The interplay of light, texture, and form creates an environment that feels both refined and deeply comfortable.",
@@ -61,26 +77,13 @@ export const projects: Project[] = [
     ],
     curations: [],
   },
-  {
-    slug: "our-project-p1",
-    title: "Project One",
-    location: "India",
-    heroImage: cld("Our_Project_p1", "image_1.webp"),
-    description:
-      "A space designed with intention and elegance, where every detail serves a purpose. The interplay of light, texture, and form creates an environment that feels both refined and deeply comfortable.",
-    interiorImages: [
-      cld("Our_Project_p1", "image_2.webp"),
-      cld("Our_Project_p1", "image_3.webp"),
-      cld("Our_Project_p1", "image_4.webp"),
-      cld("Our_Project_p1", "image_5.webp"),
-      cld("Our_Project_p1", "image_6.webp"),
-    ],
-    curations: [],
-  },
+  
+  
+  
   {
     slug: "our-project-p4",
-    title: "Project Four",
-    location: "India",
+    title: "The Skyhigh Retreat",
+    location: "Vadodara",
     heroImage: cld("Our_Project_p4", "image_1.webp"),
     description:
       "A space designed with intention and elegance, where every detail serves a purpose. The interplay of light, texture, and form creates an environment that feels both refined and deeply comfortable.",
@@ -95,8 +98,8 @@ export const projects: Project[] = [
   },
   {
     slug: "sama-residence",
-    title: "Sama Residence",
-    location: "India",
+    title: "Shah's Residence",
+    location: "Sama, Vadodara",
     heroImage: cld("sama residence", "IMG_1607.webp"),
     description:
       "A space designed with intention and elegance, where every detail serves a purpose. The interplay of light, texture, and form creates an environment that feels both refined and deeply comfortable.",
@@ -128,8 +131,8 @@ export const projects: Project[] = [
   },
   {
     slug: "unknown",
-    title: "Unknown",
-    location: "India",
+    title: "The Grid Residence",
+    location: "Vadodara",
     heroImage: cld("unknown", "10a20530-5bea-4898-b7be-a5a093f59533.webp"),
     description:
       "A space designed with intention and elegance, where every detail serves a purpose. The interplay of light, texture, and form creates an environment that feels both refined and deeply comfortable.",
@@ -142,23 +145,9 @@ export const projects: Project[] = [
     curations: [],
   },
   {
-    slug: "karelibaug",
-    title: "Karelibaug",
-    location: "India",
-    heroImage: cld("karelibaug", "7210a478-ec5e-4eea-a9f1-e99411c290b2.webp"),
-    description:
-      "A space designed with intention and elegance, where every detail serves a purpose. The interplay of light, texture, and form creates an environment that feels both refined and deeply comfortable.",
-    interiorImages: [
-      cld("karelibaug", "72b09f90-b46d-4ef5-9aa2-9fabed44401f.webp"),
-      cld("karelibaug", "af660f91-2908-44b1-86c4-956b3dea21d1.webp"),
-      cld("karelibaug", "fb6de847-3f37-4543-87bb-1d717b8c7cfc.webp"),
-    ],
-    curations: [],
-  },
-  {
     slug: "kolhapur",
-    title: "Kolhapur",
-    location: "India",
+    title: "The Courtyard Estate",
+    location: "Kolhapur",
     heroImage: cld("kolhapur", "40cc7527-beb5-448f-8fe0-36044e29fd9d.webp"),
     description:
       "A space designed with intention and elegance, where every detail serves a purpose. The interplay of light, texture, and form creates an environment that feels both refined and deeply comfortable.",
@@ -192,8 +181,8 @@ export const projects: Project[] = [
   },
   {
     slug: "anhaya-store-kolhapur",
-    title: "Casa Sutra",
-    location: "Kolhapur, Maharashtra",
+    title: "Anhaya Store, Kolhapur",
+    location: "Kolhapur",
     area: "4,200 sqft.",
     heroImage: cld(
       "Anhaya Store, Kolhapur",

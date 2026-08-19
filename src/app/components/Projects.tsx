@@ -10,25 +10,25 @@ import { siteImage } from "@/data/images";
 
 const projects = [
   {
-    title: "Project Two",
-    location: "India",
+    title: "The Hanging Pyramids",
+    location: "Vadodara",
+    year: "2026",
+    image: siteImage("/Our_Project_p1/image_1.webp"),
+    href: "/spaces/our-project-p1",
+  },
+  {
+    title: "Villa Hacienda",
+    location: "Sherkhi, Vadodara",
     year: "2026",
     image: siteImage("/Our_Project_p2/image_1.webp"),
     href: "/spaces/our-project-p2",
   },
   {
-    title: "Project One",
-    location: "India",
+    title: "The Floating Boxes",
+    location: "Vadodara",
     year: "2026",
-    image: siteImage("/Our_Project_p1/image_4.webp"),
-    href: "/spaces/our-project-p1",
-  },
-  {
-    title: "Project Four",
-    location: "India",
-    year: "2026",
-    image: siteImage("/Our_Project_p4/image_6.webp"),
-    href: "/spaces/our-project-p4",
+    image: siteImage("/Our_Project_p3/image_1.webp"),
+    href: "/spaces/our-project-p3",
   },
 ];
 

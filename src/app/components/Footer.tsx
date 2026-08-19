@@ -97,26 +97,67 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* 2. Lower Footer Information Section (28% total desktop height) */}
-      <div className="footer-info-section relative z-30 w-full pt-16 pb-8 px-6 md:px-[12vw] bg-[#0B0F14] text-[#F5F3EE]">
+      {/* 2. Lower Footer Information Section */}
+      <div 
+        className="footer-info-section relative z-30 w-full bg-[#0B0F14] text-[#F5F3EE]"
+        style={{
+          maxWidth: "1120px",
+          margin: "0 auto",
+          padding: "48px 48px 50px",
+          boxSizing: "border-box"
+        }}
+      >
 
         {/* Three main horizontal columns */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8 items-start w-full">
+        <div 
+          className="w-full grid grid-cols-1 md:grid-cols-[330px_220px_260px] items-start justify-start"
+          style={{ gap: "150px" }}
+        >
 
-          {/* Left Column (45% width on desktop) */}
-          <div className="footer-col md:col-span-5 flex flex-col items-start text-left">
-            <span className="font-serif text-2xl font-bold tracking-[0.1em] text-white uppercase mb-4">
-              DE'CAVES
-            </span>
-            <p className="font-sans text-[13px] leading-relaxed text-[#F5F3EE]/70 mb-6 max-w-sm">
+          {/* Column 1 (Brand) */}
+          <div className="footer-col flex flex-col items-start justify-start text-left w-full">
+            {/* Complete logo — single image, no borders, no wrappers */}
+            <img
+              src="/decaves-full-logo.png"
+              alt="DE'CAVES"
+              style={{
+                width: "145px",
+                height: "auto",
+                maxHeight: "130px",
+                objectFit: "contain",
+                objectPosition: "left center",
+                display: "block",
+                margin: "0 0 24px 0",
+                background: "transparent",
+                border: "none",
+                outline: "none",
+                boxShadow: "none"
+              }}
+            />
+
+            {/* Description */}
+            <p 
+              className="font-sans leading-[1.7] text-[#F5F3EE]/65 text-left"
+              style={{ maxWidth: "300px", fontSize: "14px", margin: "0 0 20px 0" }}
+            >
               Creating spaces shaped by material, light, proportion and the people who inhabit them.
             </p>
-            <div className="flex gap-6 items-center">
+
+            {/* Brand categories */}
+            <p
+              className="font-sans font-medium text-[#F5F3EE]/40 uppercase tracking-[0.12em] whitespace-nowrap"
+              style={{ fontSize: "12px", margin: "0 0 28px 0" }}
+            >
+              ARCHITECTURE &nbsp;·&nbsp; INTERIORS &nbsp;·&nbsp; SPACES
+            </p>
+
+            {/* Social links */}
+            <div className="flex items-center" style={{ gap: "36px", margin: "0" }}>
               <a
                 href="https://www.instagram.com/decaves_by_chittearchitects/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-sans text-[12px] font-semibold uppercase tracking-[0.1em] text-[#F5F3EE]/55 hover:text-white transition-colors duration-300 relative group pb-1"
+                className="font-sans text-[12px] font-semibold uppercase tracking-[0.1em] text-[#F5F3EE]/50 hover:text-white transition-colors duration-300 relative group pb-1"
               >
                 Instagram
                 <span className="absolute left-0 bottom-0 w-full h-[1px] bg-white scale-x-0 origin-left transition-transform duration-300 ease-out group-hover:scale-x-100" />
@@ -125,7 +166,7 @@ export default function Footer() {
                 href="https://in.pinterest.com/decaves_by_chittearchitects/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-sans text-[12px] font-semibold uppercase tracking-[0.1em] text-[#F5F3EE]/55 hover:text-white transition-colors duration-300 relative group pb-1"
+                className="font-sans text-[12px] font-semibold uppercase tracking-[0.1em] text-[#F5F3EE]/50 hover:text-white transition-colors duration-300 relative group pb-1"
               >
                 Pinterest
                 <span className="absolute left-0 bottom-0 w-full h-[1px] bg-white scale-x-0 origin-left transition-transform duration-300 ease-out group-hover:scale-x-100" />
@@ -133,12 +174,15 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Center Column (25% width on desktop) */}
-          <div className="footer-col md:col-span-3 md:col-start-7 flex flex-col items-start text-left">
-            <h3 className="font-sans text-[11px] font-bold tracking-[0.2em] text-[#F5F3EE]/45 uppercase mb-6">
+          {/* Column 2 (Explore) */}
+          <div className="footer-col flex flex-col items-start text-left self-start">
+            <h3 
+              className="font-sans text-[11px] font-bold tracking-[0.2em] text-[#F5F3EE]/40 uppercase"
+              style={{ marginBottom: "28px" }}
+            >
               Explore
             </h3>
-            <div className="flex flex-col gap-3 font-sans" style={{ fontSize: "14px", fontWeight: 400 }}>
+            <div className="flex flex-col font-sans" style={{ fontSize: "14px", fontWeight: 400, gap: "18px" }}>
               {[
                 { label: "Home", href: "/" },
                 { label: "Spaces", href: "/spaces" },
@@ -148,7 +192,7 @@ export default function Footer() {
                 <Link
                   key={link.label}
                   href={link.href}
-                  className="text-[#F5F3EE]/75 hover:text-white transition-colors duration-250 w-fit relative group"
+                  className="text-[#F5F3EE]/70 hover:text-white transition-colors duration-250 w-fit relative group"
                 >
                   {link.label}
                   <span className="absolute left-0 bottom-[-1px] w-full h-[1px] bg-white/40 scale-x-0 origin-left transition-transform duration-300 ease-out group-hover:scale-x-100" />
@@ -157,12 +201,15 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Right Column (30% width on desktop) */}
-          <div className="footer-col md:col-span-3 flex flex-col items-start text-left">
-            <h3 className="font-sans text-[11px] font-bold tracking-[0.2em] text-[#F5F3EE]/45 uppercase mb-6">
+          {/* Column 3 (Contact) */}
+          <div className="footer-col flex flex-col items-start text-left self-start">
+            <h3 
+              className="font-sans text-[11px] font-bold tracking-[0.2em] text-[#F5F3EE]/40 uppercase"
+              style={{ marginBottom: "28px" }}
+            >
               Contact
             </h3>
-            <div className="flex flex-col gap-4 font-sans text-[13px] text-[#F5F3EE]/75">
+            <div className="flex flex-col font-sans text-[13px] text-[#F5F3EE]/70" style={{ gap: "18px" }}>
               <a
                 href="mailto:design@dcaves.in"
                 className="hover:text-white transition-colors duration-250 w-fit"
@@ -170,10 +217,10 @@ export default function Footer() {
                 design@dcaves.in
               </a>
               <a
-                href="tel:+919898899133"
+                href="tel:+91898899133"
                 className="hover:text-white transition-colors duration-250 w-fit"
               >
-                +91 98988 99133
+                +91 8988 99133
               </a>
               <p className="leading-relaxed">
                 Vadodara · Gujarat · India
@@ -183,11 +230,17 @@ export default function Footer() {
 
         </div>
 
-        {/* 3. Bottom Bar */}
-        <div className="footer-bottom-bar flex flex-col md:flex-row justify-between items-center text-center gap-4 md:gap-0 mt-16 pt-6 border-t border-white/12 text-[12px] text-[#F5F3EE]/55">
+        {/* Bottom Bar */}
+        <div 
+          className="footer-bottom-bar flex flex-col md:flex-row justify-between items-center w-full text-[12px] text-[#F5F3EE]/45"
+          style={{
+            borderTop: "1px solid rgba(255,255,255,0.12)",
+            marginTop: "64px",
+            paddingTop: "24px"
+          }}
+        >
           <span>&copy; 2026 DE'CAVES. ALL RIGHTS RESERVED.</span>
           <span className="font-semibold uppercase tracking-[0.1em]">ARCHITECTURE &amp; INTERIORS</span>
-
         </div>
 
       </div>
