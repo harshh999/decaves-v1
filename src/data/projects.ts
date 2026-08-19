@@ -33,7 +33,7 @@ function rootFile(file: string) {
 export const projects: Project[] = [
   {
     slug: "our-project-p1",
-    title: "The Hanging Pyramids",
+    title: "The Floating boxes",
     location: "Vadodara",
     heroImage: cld("Our_Project_p1", "image_1.webp"),
     description:
@@ -49,7 +49,7 @@ export const projects: Project[] = [
   },
   {
     slug: "our-project-p2",
-    title: "Villa Hacienda",
+    title: "The Hanging Pyramids ",
     location: "Sherkhi, Vadodara",
     heroImage: cld("Our_Project_p2", "image_1.webp"),
     description:
@@ -65,7 +65,7 @@ export const projects: Project[] = [
   },
   {
     slug: "our-project-p3",
-    title: "The Floating Boxes",
+    title: "Villa Hacienda",
     location: "Vadodara",
     heroImage: cld("Our_Project_p3", "image_1.webp"),
     description:
@@ -77,9 +77,9 @@ export const projects: Project[] = [
     ],
     curations: [],
   },
-  
-  
-  
+
+
+
   {
     slug: "our-project-p4",
     title: "The Skyhigh Retreat",

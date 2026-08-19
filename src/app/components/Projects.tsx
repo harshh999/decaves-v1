@@ -10,21 +10,21 @@ import { siteImage } from "@/data/images";
 
 const projects = [
   {
-    title: "The Hanging Pyramids",
+    title: "The Floating boxes ",
     location: "Vadodara",
     year: "2026",
     image: siteImage("/Our_Project_p1/image_1.webp"),
     href: "/spaces/our-project-p1",
   },
   {
-    title: "Villa Hacienda",
+    title: "The Hanging Pyramids ",
     location: "Sherkhi, Vadodara",
     year: "2026",
     image: siteImage("/Our_Project_p2/image_1.webp"),
     href: "/spaces/our-project-p2",
   },
   {
-    title: "The Floating Boxes",
+    title: "Villa Hacienda",
     location: "Vadodara",
     year: "2026",
     image: siteImage("/Our_Project_p3/image_1.webp"),
@@ -95,26 +95,42 @@ function ProjectCard({ project }: { project: (typeof projects)[0] }) {
         />
       </div>
 
-      <a href={project.href} className="group absolute inset-0 z-10">
-        <div className="absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+      <a href={project.href} className="group absolute inset-0 z-10 flex flex-col justify-end">
+        {/* Permanent Gradient Overlay */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background: 'linear-gradient(to bottom, rgba(0,0,0,0) 35%, rgba(0,0,0,0.12) 55%, rgba(0,0,0,0.58) 100%)'
+          }}
+        />
 
-        <div className="absolute inset-x-0 bottom-0 mx-auto w-[85%] pb-8 md:pb-12">
-          <div className="grid translate-y-8 grid-cols-[1fr_auto] items-end opacity-0 transition-all duration-500 ease-out group-hover:translate-y-0 group-hover:opacity-100">
-            <div>
-              <h3 className="font-display text-xl font-light leading-tight tracking-tight text-cream drop-shadow-lg md:text-2xl">
-                {project.title}
-              </h3>
-              <p className="mt-1 text-xs tracking-[0.18em] text-cream uppercase drop-shadow-lg md:text-sm">
-                {project.location}
-                <span className="mx-2">·</span>
-                {project.year}
-              </p>
-            </div>
-            <div className="mb-1">
-              <span className="flex h-10 w-10 items-center justify-center rounded-full border border-cream/30 text-cream transition-colors group-hover:border-brown group-hover:bg-tan-light group-hover:text-brown-deep">
-                <ArrowRight className="h-4 w-4" />
-              </span>
-            </div>
+        {/* Permanent Text Overlay Container */}
+        <div className="relative z-20 w-full px-6 pb-6 md:w-[65%] md:px-12 md:pb-8 lg:w-[42%] xl:w-[38%] xl:px-12 xl:pb-10">
+          <h3
+            className="font-serif text-[28px] md:text-[34px] lg:text-[38px] leading-tight drop-shadow-sm"
+            style={{ fontWeight: 400, color: 'rgba(255, 255, 255, 0.95)' }}
+          >
+            {project.title}
+          </h3>
+
+          <div
+            className="w-full h-[1px]"
+            style={{
+              backgroundColor: 'rgba(255, 255, 255, 0.28)',
+              marginTop: '16px',
+              marginBottom: '16px'
+            }}
+          />
+
+          <div
+            className="flex flex-row justify-between items-center text-[10px] md:text-[11px] lg:text-[12px] uppercase drop-shadow-sm"
+            style={{
+              letterSpacing: '0.18em',
+              color: 'rgba(255, 255, 255, 0.72)'
+            }}
+          >
+            <span>{project.location}</span>
+            <span>{project.year}</span>
           </div>
         </div>
       </a>
@@ -173,19 +189,19 @@ export default function Projects() {
   }, []);
 
   return (
-    <section 
-      id="projects-section" 
-      ref={sectionRef} 
+    <section
+      id="projects-section"
+      ref={sectionRef}
       className="bg-[#F5F3EE] relative z-20"
     >
       <div className="px-6 pt-[100px] pb-[70px] text-center md:px-12 xl:px-20 flex flex-col items-center">
-        <h2 
+        <h2
           ref={titleRef}
           className="font-serif italic font-light text-4xl md:text-[68px] leading-[1.1] text-[#171717] tracking-normal"
         >
           Selected Architecture
         </h2>
-        <p 
+        <p
           ref={subtitleRef}
           className="mt-[32px] max-w-[620px] mx-auto text-[17px] md:text-[18px] leading-[1.8] text-[#55514C] font-serif font-light"
         >

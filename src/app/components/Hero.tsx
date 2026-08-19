@@ -3,15 +3,14 @@
 import { useState, useEffect, useRef } from "react";
 import gsap from "gsap";
 import CloudinaryImage from "./CloudinaryImage";
-import { siteImage } from "@/data/images";
+import { projects } from "@/data/projects";
 
 const images = [
-  siteImage("/hero_section_1.webp"),
-  siteImage("/hero_section_2.webp"),
-  siteImage("/hero_section_3.webp"),
-  siteImage("/hero_section_4.webp"),
-  siteImage("/hero_section_5.webp"),
-];
+  projects.find((p) => p.slug === "our-project-p2")?.interiorImages[0] || "",
+  projects.find((p) => p.slug === "our-project-p1")?.interiorImages[2] || "",
+  projects.find((p) => p.slug === "our-project-p4")?.interiorImages[3] || "",
+  projects.find((p) => p.slug === "ankur-bhai")?.interiorImages[0] || "",
+].filter(Boolean);
 
 export default function Hero() {
   const [current, setCurrent] = useState(0);
