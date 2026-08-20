@@ -90,13 +90,21 @@ export default function SpacesList({ projects }: { projects: Project[] }) {
               <div className={`md:col-span-7 ${alternate ? "md:order-2" : "md:order-1"}`}>
                 <div className="space-img-clip relative aspect-[4/3] overflow-hidden bg-brown-dark/10">
                   <div className="space-img-inner absolute inset-0">
-                    <CloudinaryImage
-                      src={project.heroImage}
-                      alt={project.title}
-                      fill
-                      sizes="(max-width: 767px) 100vw, 58vw"
-                      className="h-full w-full object-cover transition-transform duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-[1.025] warm-editorial-filter"
-                    />
+                    {project.heroImage.startsWith("http") ? (
+                      <img
+                        src={project.heroImage}
+                        alt={project.title}
+                        className="absolute inset-0 h-full w-full object-cover transition-transform duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-[1.025] warm-editorial-filter"
+                      />
+                    ) : (
+                      <CloudinaryImage
+                        src={project.heroImage}
+                        alt={project.title}
+                        fill
+                        sizes="(max-width: 767px) 100vw, 58vw"
+                        className="h-full w-full object-cover transition-transform duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-[1.025] warm-editorial-filter"
+                      />
+                    )}
                   </div>
                   
                   {/* Hover Metadata Overlay */}
