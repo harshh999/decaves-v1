@@ -101,14 +101,25 @@ export default function ImageLightbox({
                 className="flex flex-shrink-0 items-center justify-center"
                 style={{ width: MAIN_W, height: 492 }}
               >
-                <CloudinaryImage
-                  src={src}
-                  alt=""
-                  width={MAIN_W}
-                  height={492}
-                  className="max-h-full max-w-full object-contain"
-                  loading={i === currentIndex || i === currentIndex + 1 || i === currentIndex - 1 ? "eager" : "lazy"}
-                />
+                {src.startsWith("http") ? (
+                  <img
+                    src={src}
+                    alt=""
+                    width={MAIN_W}
+                    height={492}
+                    className="max-h-full max-w-full object-contain"
+                    loading={i === currentIndex || i === currentIndex + 1 || i === currentIndex - 1 ? "eager" : "lazy"}
+                  />
+                ) : (
+                  <CloudinaryImage
+                    src={src}
+                    alt=""
+                    width={MAIN_W}
+                    height={492}
+                    className="max-h-full max-w-full object-contain"
+                    loading={i === currentIndex || i === currentIndex + 1 || i === currentIndex - 1 ? "eager" : "lazy"}
+                  />
+                )}
               </div>
             ))}
           </div>
@@ -138,7 +149,11 @@ export default function ImageLightbox({
               if (i !== currentIndex) e.currentTarget.style.opacity = "0.5";
             }}
           >
-            <CloudinaryImage src={src} alt="" width={THUMB_W} height={THUMB_H} className="h-full w-full object-cover" />
+            {src.startsWith("http") ? (
+              <img src={src} alt="" width={THUMB_W} height={THUMB_H} className="h-full w-full object-cover" />
+            ) : (
+              <CloudinaryImage src={src} alt="" width={THUMB_W} height={THUMB_H} className="h-full w-full object-cover" />
+            )}
           </button>
         ))}
       </div>

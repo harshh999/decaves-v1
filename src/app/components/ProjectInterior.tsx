@@ -27,13 +27,21 @@ export default function ProjectInterior({ images }: Props) {
             onClick={() => open(i)}
             className="group relative aspect-video w-full cursor-pointer overflow-hidden bg-brown-deep/5"
           >
-            <CloudinaryImage
-              src={src}
-              alt=""
-              fill
-              sizes="(max-width: 639px) 100vw, 50vw"
-              className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-            />
+            {src.startsWith("http") ? (
+              <img
+                src={src}
+                alt=""
+                className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+              />
+            ) : (
+              <CloudinaryImage
+                src={src}
+                alt=""
+                fill
+                sizes="(max-width: 639px) 100vw, 50vw"
+                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+              />
+            )}
             <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/70 via-black/35 to-transparent opacity-90 transition-opacity duration-500 group-hover:opacity-100" />
             <div className="absolute inset-0 bg-brown-deep/0 transition-colors duration-500 group-hover:bg-brown-deep/10" />
           </div>

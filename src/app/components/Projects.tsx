@@ -13,21 +13,21 @@ const projects = [
     title: "The Floating boxes ",
     location: "Vadodara",
     year: "2026",
-    image: siteImage("/Our_Project_p1/image_1.webp"),
+    image: "https://res.cloudinary.com/diqslwugu/image/upload/c_limit,w_1920/f_auto/q_auto/v1787238405/floatingboxes2_wpxpwj.webp",
     href: "/spaces/our-project-p1",
   },
   {
     title: "The Hanging Pyramids ",
     location: "Sherkhi, Vadodara",
     year: "2026",
-    image: siteImage("/Our_Project_p2/image_1.webp"),
+    image: "https://res.cloudinary.com/diqslwugu/image/upload/c_limit,w_1920/f_auto/q_auto/v1787252823/ay_mggfm9.webp",
     href: "/spaces/our-project-p2",
   },
   {
     title: "Villa Hacienda",
     location: "Vadodara",
     year: "2026",
-    image: siteImage("/Our_Project_p3/image_1.webp"),
+    image: "https://res.cloudinary.com/wkqz5bnk/image/upload/c_limit,w_1920/f_auto/q_auto/v1/our-project-p3/image-4?_a=BAVT+ODY0",
     href: "/spaces/our-project-p3",
   },
 ];
@@ -84,15 +84,25 @@ function ProjectCard({ project }: { project: (typeof projects)[0] }) {
         ref={wrapperRef}
         className="relative mx-auto flex h-full items-center justify-center overflow-hidden bg-[#F5F3EE]"
       >
-        <CloudinaryImage
-          ref={imgRef}
-          src={project.image}
-          alt={project.title}
-          width={1920}
-          height={1080}
-          className="h-[120%] w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-          loading="lazy"
-        />
+        {project.image.startsWith("http") ? (
+          <img
+            ref={imgRef as any}
+            src={project.image}
+            alt={project.title}
+            className="absolute inset-0 h-[120%] w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+            loading="lazy"
+          />
+        ) : (
+          <CloudinaryImage
+            ref={imgRef}
+            src={project.image}
+            alt={project.title}
+            width={1920}
+            height={1080}
+            className="h-[120%] w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+            loading="lazy"
+          />
+        )}
       </div>
 
       <a href={project.href} className="group absolute inset-0 z-10 flex flex-col justify-end">

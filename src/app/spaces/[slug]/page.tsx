@@ -67,14 +67,22 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         </section>
 
         <div className="relative w-full aspect-[4/3] md:aspect-[16/9] md:max-h-[85vh]">
-          <CloudinaryImage
-            src={project.heroImage}
-            alt={project.title}
-            fill
-            sizes="100vw"
-            priority
-            className="h-full w-full object-cover object-center"
-          />
+          {project.heroImage.startsWith("http") ? (
+            <img
+              src={project.heroImage}
+              alt={project.title}
+              className="absolute inset-0 h-full w-full object-cover object-center"
+            />
+          ) : (
+            <CloudinaryImage
+              src={project.heroImage}
+              alt={project.title}
+              fill
+              sizes="100vw"
+              priority
+              className="h-full w-full object-cover object-center"
+            />
+          )}
         </div>
 
         <section className="w-full overflow-hidden bg-tan-light/30 pt-20 pb-24 md:pt-28 md:pb-16">
@@ -89,13 +97,21 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                 </p>
               </div>
               <div className="relative aspect-[16/9] w-full shrink-0 md:w-[50%] lg:w-[50%]">
-                <CloudinaryImage
-                  src={visionImage}
-                  alt=""
-                  fill
-                  sizes="(max-width: 767px) 100vw, 50vw"
-                  className="h-full w-full object-cover"
-                />
+                {visionImage.startsWith("http") ? (
+                  <img
+                    src={visionImage}
+                    alt=""
+                    className="absolute inset-0 h-full w-full object-cover"
+                  />
+                ) : (
+                  <CloudinaryImage
+                    src={visionImage}
+                    alt=""
+                    fill
+                    sizes="(max-width: 767px) 100vw, 50vw"
+                    className="h-full w-full object-cover"
+                  />
+                )}
               </div>
             </div>
             <hr className="mt-10 h-px w-full border-0 bg-brown/10 md:mt-14" />
