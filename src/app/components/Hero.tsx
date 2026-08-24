@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import Link from "next/link";
 import gsap from "gsap";
 import CloudinaryImage from "./CloudinaryImage";
 import { projects } from "@/data/projects";
@@ -73,13 +74,7 @@ export default function Hero() {
     };
   }, []);
 
-  const handleExploreClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    const target = document.getElementById("about-section");
-    if (target) {
-      target.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+
 
   return (
     <section
@@ -185,19 +180,35 @@ export default function Hero() {
           </p>
 
           {/* Button CTA */}
-          <div ref={ctaRef} className="pt-4">
-            <a
-              href="#about-section"
-              onClick={handleExploreClick}
-              className="inline-block px-8 py-3.5 border rounded-full tracking-[0.2em] text-[11px] font-medium bg-transparent transition-all duration-500 ease-out hover:bg-white hover:text-neutral-900"
+          <div ref={ctaRef} className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4 w-full px-6">
+            <Link
+              href="/spaces"
+              className="w-full sm:w-auto inline-flex items-center justify-center rounded-full font-medium transition-all duration-300 ease-out hover:bg-[#ffffff] hover:text-[#222222]"
               style={{
-                borderColor: "rgba(250, 248, 245, 0.3)",
-                color: "#FAF8F5",
-                textShadow: "0px 3px 20px rgba(0,0,0,0.2)"
+                border: "1px solid rgba(255,255,255,0.7)",
+                background: "rgba(255,255,255,0.08)",
+                color: "#ffffff",
+                fontSize: "11px",
+                letterSpacing: "0.22em",
+                padding: "16px 30px"
               }}
             >
-              EXPLORE PROJECTS
-            </a>
+              EXPLORE SPACES
+            </Link>
+            <Link
+              href="/about"
+              className="w-full sm:w-auto inline-flex items-center justify-center rounded-full font-medium transition-all duration-300 ease-out hover:bg-[#ffffff] hover:text-[#222222]"
+              style={{
+                border: "1px solid rgba(255,255,255,0.7)",
+                background: "rgba(255,255,255,0.08)",
+                color: "#ffffff",
+                fontSize: "11px",
+                letterSpacing: "0.22em",
+                padding: "16px 30px"
+              }}
+            >
+              ABOUT US
+            </Link>
           </div>
 
         </div>

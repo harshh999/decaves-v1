@@ -259,23 +259,22 @@ export default function About() {
           <div className="flex flex-col justify-center text-left max-w-[560px] z-10 pt-4">
             
             {/* Label */}
-            <div ref={labelRef} className="flex items-center space-x-4 mb-8">
-              <div className="w-[40px] h-[1px]" style={{ backgroundColor: "#8A6E5A" }} />
+            <div ref={labelRef} className="mb-8 text-left">
               <span
-                className="font-sans text-[10px] md:text-[11px] font-medium tracking-[0.35em] uppercase"
+                className="font-sans text-[11px] font-medium tracking-[0.35em] uppercase"
                 style={{ color: "#8A6E5A" }}
               >
-                Our Story
+                OUR APPROACH
               </span>
             </div>
 
             {/* Heading */}
             <h3
               ref={headingRef}
-              className="font-serif text-4xl md:text-[64px] leading-[1.0] md:leading-[0.98] font-normal tracking-[-0.03em] mb-12 max-w-[520px]"
+              className="font-serif text-4xl md:text-[64px] leading-[1.12] font-light tracking-[-0.03em] mb-12 max-w-[520px]"
               style={{ color: "#4A2D1F" }}
             >
-              We believe every home should tell your story, not ours.
+              Spaces designed around the way you live.
             </h3>
 
             {/* Body Paragraphs */}
