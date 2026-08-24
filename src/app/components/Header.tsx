@@ -16,7 +16,6 @@ const navLinks = [
 export default function Header() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState<string>("home");
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const linkRefs = useRef<(HTMLAnchorElement | null)[]>([]);
   const [pillStyle, setPillStyle] = useState<{ left: number; width: number; opacity: number }>({
@@ -35,53 +34,16 @@ export default function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Update scrolled active section on scroll when on home page
-  useEffect(() => {
-    if (pathname !== "/") {
-      setActiveSection("");
-      return;
-    }
-
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY + window.innerHeight / 3;
-
-      const aboutEl = document.getElementById("about-section");
-      const projectsEl = document.getElementById("projects-section");
-
-      if (projectsEl && scrollPosition >= projectsEl.offsetTop && scrollPosition < (projectsEl.offsetTop + projectsEl.offsetHeight)) {
-        setActiveSection("spaces");
-      } else if (aboutEl && scrollPosition >= aboutEl.offsetTop) {
-        setActiveSection("about");
-      } else {
-        setActiveSection("home");
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
-
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [pathname]);
-
   const activeHref =
     pathname === "/"
       ? "/"
       : pathname.startsWith("/spaces")
         ? "/spaces"
-        : pathname;
+        : pathname.startsWith("/about")
+          ? "/about"
+          : pathname;
 
-  let currentHighlight = activeHref;
-  if (pathname === "/") {
-    if (activeSection === "spaces") {
-      currentHighlight = "/spaces";
-    } else if (activeSection === "about") {
-      currentHighlight = "/about";
-    } else {
-      currentHighlight = "/";
-    }
-  }
-
-  const activeIndex = navLinks.findIndex((link) => link.href === currentHighlight);
+  const activeIndex = navLinks.findIndex((link) => link.href === activeHref);
 
   const updatePillPosition = (targetIndex: number) => {
     const el = linkRefs.current[targetIndex];

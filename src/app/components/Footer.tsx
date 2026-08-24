@@ -163,15 +163,7 @@ export default function Footer() {
                 Instagram
                 <span className="absolute left-0 bottom-0 w-full h-[1px] bg-[#F2F1ED] scale-x-0 origin-left transition-transform duration-300 ease-out group-hover:scale-x-100" />
               </a>
-              <a
-                href="https://in.pinterest.com/decaves_by_chittearchitects/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-sans text-[12px] font-semibold uppercase tracking-[0.1em] text-[#C7C9C7] hover:text-[#F2F1ED] transition-colors duration-300 relative group pb-1"
-              >
-                Pinterest
-                <span className="absolute left-0 bottom-0 w-full h-[1px] bg-[#F2F1ED] scale-x-0 origin-left transition-transform duration-300 ease-out group-hover:scale-x-100" />
-              </a>
+
             </div>
           </div>
 

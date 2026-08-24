@@ -97,7 +97,7 @@ export const projects: Project[] = [
     slug: "our-project-p4",
     title: "The Skyhigh Retreat",
     location: "Vadodara",
-    heroImage: cld("Our_Project_p4", "image_1.webp"),
+    heroImage: "https://res.cloudinary.com/wkqz5bnk/image/upload/c_limit,w_640/f_auto/q_auto/v1/our-project-p4/image-5?_a=BAVT+ODY0",
     description:
       "A space designed with intention and elegance, where every detail serves a purpose. The interplay of light, texture, and form creates an environment that feels both refined and deeply comfortable.",
     interiorImages: [
@@ -113,7 +113,7 @@ export const projects: Project[] = [
     slug: "sama-residence",
     title: "Shah's Residence",
     location: "Sama, Vadodara",
-    heroImage: cld("sama residence", "IMG_1607.webp"),
+    heroImage: cld("sama residence", "IMG_1621.webp"),
     description:
       "A space designed with intention and elegance, where every detail serves a purpose. The interplay of light, texture, and form creates an environment that feels both refined and deeply comfortable.",
     interiorImages: [
@@ -129,7 +129,7 @@ export const projects: Project[] = [
     slug: "birens-villa",
     title: "The Ivory House",
     location: "Vadodara",
-    heroImage: cld("Biren's Villa", "image_1.webp"),
+    heroImage: cld("Biren's Villa", "image_2.webp"),
     description:
       "A distinctive residence shaped around light, scale, and the rhythm of everyday living. Generous volumes and carefully curated textures come together to create a home that feels both grounded and effortlessly elegant.",
     interiorImages: [
@@ -161,7 +161,7 @@ export const projects: Project[] = [
     slug: "kolhapur",
     title: "The Courtyard Estate",
     location: "Kolhapur",
-    heroImage: cld("kolhapur", "40cc7527-beb5-448f-8fe0-36044e29fd9d.webp"),
+    heroImage: cld("kolhapur", "50ff5272-b0b8-4412-bf31-5a461466cedd.webp"),
     description:
       "A space designed with intention and elegance, where every detail serves a purpose. The interplay of light, texture, and form creates an environment that feels both refined and deeply comfortable.",
     interiorImages: [
@@ -177,7 +177,7 @@ export const projects: Project[] = [
     location: "Vadodara",
     area: "5,160 sqft.",
     client: "AVM GSPN Chowdary",
-    heroImage: cld("Ankur's-villa", "ANKUR'S-VILLA", "BPD_0902 - Copy.webp"),
+    heroImage: cld("Ankur's-villa", "ANKUR'S-VILLA", "BPD_0945.webp"),
     description:
       "Rooted in the idea of openness, the residence dissolves boundaries between spaces through flowing forms, natural illumination, and carefully framed moments of connection. Warm minimalism, layered textures, and an abundance of daylight create a home that feels both serene and vibrant.",
     interiorImages: [
@@ -201,7 +201,7 @@ export const projects: Project[] = [
       "Anhaya Store, Kolhapur",
       "Anhaya Store, Kolhapur (A+I)",
       "Photoshoot",
-      "10.webp"
+      "12.webp"
     ),
     description:
       "A retail space designed to immerse visitors in a world of curated experiences. Every detail—from the material palette to the lighting—has been crafted to elevate the shopping journey into something memorable.",
