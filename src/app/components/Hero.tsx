@@ -3,8 +3,6 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import gsap from "gsap";
-import CloudinaryImage from "./CloudinaryImage";
-import { projects } from "@/data/projects";
 
 const images = [
   "https://res.cloudinary.com/diqslwugu/image/upload/v1787251347/th1_ds5o3z.webp",
@@ -206,11 +204,9 @@ function BackgroundSlideshow() {
             i === current ? "opacity-100" : "opacity-0"
           }`}
         >
-          <CloudinaryImage
+          <img
             src={src}
             alt=""
-            fill
-            sizes="100vw"
             className="h-full w-full object-cover"
             style={{
               transform: i === current ? "scale(1.03)" : "scale(1.0)",
@@ -219,6 +215,7 @@ function BackgroundSlideshow() {
             }}
             fetchPriority={i === 0 ? "high" : "low"}
             loading={i === 0 ? "eager" : "lazy"}
+            decoding={i === 0 ? "sync" : "async"}
           />
         </div>
       ))}

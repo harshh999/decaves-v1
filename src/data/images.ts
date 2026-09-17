@@ -12,5 +12,6 @@ export function siteImage(localPath: string) {
 }
 
 export function cldUrl(localPath: string) {
-  return `https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/${toPublicId(localPath)}`;
+  const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME || "diqslwugu";
+  return `https://res.cloudinary.com/${cloudName}/image/upload/${toPublicId(localPath)}`;
 }
