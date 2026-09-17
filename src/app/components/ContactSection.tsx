@@ -49,38 +49,44 @@ export default function ContactSection() {
     if (typeof window === "undefined") return;
     gsap.registerPlugin(ScrollTrigger);
 
-    const ctx = gsap.context(() => {
-      if (introRef.current) {
-        gsap.fromTo(
-          introRef.current.children,
-          { opacity: 0, y: 28 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 1.1,
-            stagger: 0.1,
-            ease: "power3.out",
-            scrollTrigger: { trigger: introRef.current, start: "top 78%", once: true },
-          }
-        );
-      }
-      if (cardsRef.current) {
-        gsap.fromTo(
-          cardsRef.current.children,
-          { opacity: 0, y: 40 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 1.2,
-            stagger: 0.12,
-            ease: "power3.out",
-            scrollTrigger: { trigger: cardsRef.current, start: "top 80%", once: true },
-          }
-        );
-      }
-    }, sectionRef);
+    let ctx: gsap.Context;
+    const rafId = requestAnimationFrame(() => {
+      ctx = gsap.context(() => {
+        if (introRef.current) {
+          gsap.fromTo(
+            introRef.current.children,
+            { opacity: 0, y: 28 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 1.1,
+              stagger: 0.1,
+              ease: "power3.out",
+              scrollTrigger: { trigger: introRef.current, start: "top 78%", once: true },
+            }
+          );
+        }
+        if (cardsRef.current) {
+          gsap.fromTo(
+            cardsRef.current.children,
+            { opacity: 0, y: 40 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 1.2,
+              stagger: 0.12,
+              ease: "power3.out",
+              scrollTrigger: { trigger: cardsRef.current, start: "top 80%", once: true },
+            }
+          );
+        }
+      }, sectionRef);
+    });
 
-    return () => ctx.revert();
+    return () => {
+      cancelAnimationFrame(rafId);
+      if (ctx) ctx.revert();
+    };
   }, []);
 
   const validate = () => {

@@ -23,60 +23,59 @@ export default function About() {
     if (typeof window === "undefined") return;
     gsap.registerPlugin(ScrollTrigger);
 
-    const ctx = gsap.context(() => {
-      // Create a single timeline for the entire section entrance
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 75%", // Trigger when 25% of section is visible
-          once: true,
-        },
-      });
+    let ctx: gsap.Context;
+    const rafId = requestAnimationFrame(() => {
+      ctx = gsap.context(() => {
+        // Create a single timeline for the entire section entrance
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 75%", // Trigger when 25% of section is visible
+            once: true,
+          },
+        });
 
-      // Hide elements initially
-      gsap.set(
-        [
+        // Subtle Image Reveal
+        if (imageRef.current) {
+          tl.fromTo(
+            imageRef.current,
+            { scale: 1.04 },
+            { scale: 1, duration: 1.8, ease: "power2.out" },
+            0
+          );
+        }
+
+        // Staggered Text Reveal
+        const textElements = [
           labelRef.current,
           headingRef.current,
           p1Ref.current,
           p2Ref.current,
           quoteRef.current,
           ctaRef.current,
-        ],
-        { opacity: 0, y: 28 }
-      );
+        ].filter(Boolean);
 
-      gsap.set(imageRef.current, { scale: 1.04 });
+        if (textElements.length > 0) {
+          tl.fromTo(
+            textElements,
+            { opacity: 0, y: 28 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 1.1,
+              stagger: 0.12,
+              ease: "power3.out",
+            },
+            0.2
+          );
+        }
+      }, sectionRef);
+    });
 
-      // Subtle Image Reveal
-      tl.to(
-        imageRef.current,
-        { scale: 1, duration: 1.8, ease: "power2.out" },
-        0
-      );
-
-      // Staggered Text Reveal
-      tl.to(
-        [
-          labelRef.current,
-          headingRef.current,
-          p1Ref.current,
-          p2Ref.current,
-          quoteRef.current,
-          ctaRef.current,
-        ],
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1.1,
-          stagger: 0.12,
-          ease: "power3.out",
-        },
-        0.2
-      );
-    }, sectionRef);
-
-    return () => ctx.revert();
+    return () => {
+      cancelAnimationFrame(rafId);
+      if (ctx) ctx.revert();
+    };
   }, []);
 
   const handleExploreClick = (e: React.MouseEvent) => {

@@ -19,48 +19,50 @@ export default function Hero() {
   const ctaRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // GSAP Page Load Timeline
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline();
+    // GSAP Page Load Timeline - initialize smoothly after first paint
+    let ctx: gsap.Context;
+    const rafId = requestAnimationFrame(() => {
+      ctx = gsap.context(() => {
+        const tl = gsap.timeline();
 
-      // Ensure elements are hidden before animation starts
-      gsap.set([headlineRef.current, descriptionRef.current, ctaRef.current], {
-        opacity: 0,
-        y: 30,
-      });
+        // Background subtle scale down
+        if (bgRef.current) {
+          gsap.fromTo(
+            bgRef.current,
+            { scale: 1.05 },
+            { scale: 1, duration: 2.2, ease: "power2.out" }
+          );
+        }
 
-      // Background subtle scale down
-      gsap.fromTo(
-        bgRef.current,
-        { scale: 1.05 },
-        { scale: 1, duration: 2.4, ease: "power2.out" }
-      );
+        // Headline
+        tl.fromTo(
+          headlineRef.current,
+          { opacity: 0, y: 24 },
+          { opacity: 1, y: 0, duration: 1.1, ease: "power3.out" },
+          0.05
+        );
 
+        // Description
+        tl.fromTo(
+          descriptionRef.current,
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 1.0, ease: "power3.out" },
+          0.18
+        );
 
-      // Headline
-      tl.to(
-        headlineRef.current,
-        { opacity: 1, y: 0, duration: 1.3, ease: "power3.out" },
-        0.6
-      );
-
-      // Description
-      tl.to(
-        descriptionRef.current,
-        { opacity: 1, y: 0, duration: 1.2, ease: "power3.out" },
-        0.8
-      );
-
-      // CTA
-      tl.to(
-        ctaRef.current,
-        { opacity: 1, y: 0, duration: 1.2, ease: "power3.out" },
-        0.95
-      );
-    }, containerRef);
+        // CTA
+        tl.fromTo(
+          ctaRef.current,
+          { opacity: 0, y: 16 },
+          { opacity: 1, y: 0, duration: 1.0, ease: "power3.out" },
+          0.30
+        );
+      }, containerRef);
+    });
 
     return () => {
-      ctx.revert(); // Cleanup GSAP
+      cancelAnimationFrame(rafId);
+      if (ctx) ctx.revert();
     };
   }, []);
 
@@ -106,7 +108,7 @@ export default function Hero() {
       <div 
         className="pointer-events-none absolute inset-0 z-13 opacity-[0.025]"
         style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`
         }}
       />
 

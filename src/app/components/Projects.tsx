@@ -52,41 +52,51 @@ function ProjectCard({ project }: { project: (typeof projects)[0] }) {
     if (typeof window === "undefined") return;
     gsap.registerPlugin(ScrollTrigger);
 
-    const ctx = gsap.context(() => {
-      // Reveal with clip-path (GPU accelerated) instead of layout-triggering width
-      gsap.fromTo(
-        wrapperRef.current,
-        { clipPath: "inset(0% 7.5%)" },
-        {
-          clipPath: "inset(0% 0%)",
-          ease: "none",
-          scrollTrigger: {
-            trigger: containerRef.current,
-            start: "top bottom",
-            end: "center center",
-            scrub: true,
-          },
+    let ctx: gsap.Context;
+    const rafId = requestAnimationFrame(() => {
+      ctx = gsap.context(() => {
+        // Reveal with clip-path (GPU accelerated) instead of layout-triggering width
+        if (wrapperRef.current && containerRef.current) {
+          gsap.fromTo(
+            wrapperRef.current,
+            { clipPath: "inset(0% 7.5%)" },
+            {
+              clipPath: "inset(0% 0%)",
+              ease: "none",
+              scrollTrigger: {
+                trigger: containerRef.current,
+                start: "top bottom",
+                end: "center center",
+                scrub: true,
+              },
+            }
+          );
         }
-      );
 
-      // Subtle Image Parallax effect
-      gsap.fromTo(
-        imgRef.current,
-        { yPercent: -8 },
-        {
-          yPercent: 8,
-          ease: "none",
-          scrollTrigger: {
-            trigger: containerRef.current,
-            start: "top bottom",
-            end: "bottom top",
-            scrub: true,
-          },
+        // Subtle Image Parallax effect
+        if (imgRef.current && containerRef.current) {
+          gsap.fromTo(
+            imgRef.current,
+            { yPercent: -8 },
+            {
+              yPercent: 8,
+              ease: "none",
+              scrollTrigger: {
+                trigger: containerRef.current,
+                start: "top bottom",
+                end: "bottom top",
+                scrub: true,
+              },
+            }
+          );
         }
-      );
-    }, containerRef);
+      }, containerRef);
+    });
 
-    return () => ctx.revert();
+    return () => {
+      cancelAnimationFrame(rafId);
+      if (ctx) ctx.revert();
+    };
   }, []);
 
   const Container = project.href ? "a" : "div";

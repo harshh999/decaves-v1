@@ -31,20 +31,20 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
     // Sync Lenis scroll with ScrollTrigger
     lenis.on("scroll", ScrollTrigger.update);
 
+    const updateRaf = (time: number) => {
+      lenis.raf(time * 1000);
+    };
+
     // Add Lenis's requestAnimationFrame (raf) to GSAP's ticker
     // This ensures GSAP and Lenis are perfectly in sync
-    gsap.ticker.add((time) => {
-      lenis.raf(time * 1000);
-    });
+    gsap.ticker.add(updateRaf);
     
     // Disable GSAP's internal lag smoothing so it doesn't fight Lenis
     gsap.ticker.lagSmoothing(0);
 
     return () => {
       // Cleanup on unmount
-      gsap.ticker.remove((time) => {
-        lenis.raf(time * 1000);
-      });
+      gsap.ticker.remove(updateRaf);
       lenis.destroy();
     };
   }, []);

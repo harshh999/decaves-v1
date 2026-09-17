@@ -13,44 +13,50 @@ export default function Footer() {
     if (typeof window === "undefined") return;
     gsap.registerPlugin(ScrollTrigger);
 
-    const ctx = gsap.context(() => {
-      // Staggered reveal for the info columns
-      gsap.fromTo(
-        ".footer-col",
-        { opacity: 0, y: 24 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1.2,
-          stagger: 0.15,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: ".footer-info-section",
-            start: "top 88%",
-            once: true,
-          },
-        }
-      );
+    let ctx: gsap.Context;
+    const rafId = requestAnimationFrame(() => {
+      ctx = gsap.context(() => {
+        // Staggered reveal for the info columns
+        gsap.fromTo(
+          ".footer-col",
+          { opacity: 0, y: 24 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1.2,
+            stagger: 0.15,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: ".footer-info-section",
+              start: "top 88%",
+              once: true,
+            },
+          }
+        );
 
-      // Subtle rise on the bottom bar
-      gsap.fromTo(
-        ".footer-bottom-bar",
-        { opacity: 0, y: 15 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1.0,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: ".footer-bottom-bar",
-            start: "top 95%",
-            once: true,
-          },
-        }
-      );
-    }, footerRef);
+        // Subtle rise on the bottom bar
+        gsap.fromTo(
+          ".footer-bottom-bar",
+          { opacity: 0, y: 15 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1.0,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: ".footer-bottom-bar",
+              start: "top 95%",
+              once: true,
+            },
+          }
+        );
+      }, footerRef);
+    });
 
-    return () => ctx.revert();
+    return () => {
+      cancelAnimationFrame(rafId);
+      if (ctx) ctx.revert();
+    };
   }, []);
 
   return (

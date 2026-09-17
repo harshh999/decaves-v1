@@ -102,14 +102,21 @@ export default function Header() {
 
   // Handle window resizing to keep pill correctly aligned
   useEffect(() => {
+    let rId: number;
     const handleResize = () => {
-      const targetIndex = hoveredIndex !== null ? hoveredIndex : (activeIndex !== -1 ? activeIndex : null);
-      if (targetIndex !== null) {
-        updatePillPosition(targetIndex);
-      }
+      cancelAnimationFrame(rId);
+      rId = requestAnimationFrame(() => {
+        const targetIndex = hoveredIndex !== null ? hoveredIndex : (activeIndex !== -1 ? activeIndex : null);
+        if (targetIndex !== null) {
+          updatePillPosition(targetIndex);
+        }
+      });
     };
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    window.addEventListener("resize", handleResize, { passive: true });
+    return () => {
+      cancelAnimationFrame(rId);
+      window.removeEventListener("resize", handleResize);
+    };
   }, [hoveredIndex, activeIndex]);
 
   return (

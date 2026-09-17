@@ -105,49 +105,57 @@ export default function FAQ() {
     if (typeof window === "undefined") return;
     gsap.registerPlugin(ScrollTrigger);
 
-    const ctx = gsap.context(() => {
-      // Animate Section Header elements
-      const headerElements = headerRef.current?.children;
-      if (headerElements) {
-        gsap.fromTo(
-          headerElements,
-          { opacity: 0, y: 28 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 1.1,
-            stagger: 0.1,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: sectionRef.current,
-              start: "top 75%",
-              once: true,
-            },
-          }
-        );
-      }
-
-      // Animate FAQ items staggered
-      const items = gsap.utils.toArray(".faq-item");
-      gsap.fromTo(
-        items,
-        { opacity: 0, y: 30 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1.1,
-          stagger: 0.1,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top 60%",
-            once: true,
-          },
+    let ctx: gsap.Context;
+    const rafId = requestAnimationFrame(() => {
+      ctx = gsap.context(() => {
+        // Animate Section Header elements
+        const headerElements = headerRef.current?.children;
+        if (headerElements) {
+          gsap.fromTo(
+            headerElements,
+            { opacity: 0, y: 28 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 1.1,
+              stagger: 0.1,
+              ease: "power3.out",
+              scrollTrigger: {
+                trigger: sectionRef.current,
+                start: "top 75%",
+                once: true,
+              },
+            }
+          );
         }
-      );
-    }, sectionRef);
 
-    return () => ctx.revert();
+        // Animate FAQ items staggered
+        const items = gsap.utils.toArray(".faq-item");
+        if (items.length > 0) {
+          gsap.fromTo(
+            items,
+            { opacity: 0, y: 30 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 1.1,
+              stagger: 0.1,
+              ease: "power3.out",
+              scrollTrigger: {
+                trigger: sectionRef.current,
+                start: "top 60%",
+                once: true,
+              },
+            }
+          );
+        }
+      }, sectionRef);
+    });
+
+    return () => {
+      cancelAnimationFrame(rafId);
+      if (ctx) ctx.revert();
+    };
   }, []);
 
   return (
