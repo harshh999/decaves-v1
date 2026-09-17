@@ -119,6 +119,29 @@ export default function Header() {
     };
   }, [hoveredIndex, activeIndex]);
 
+  const handleLogoClick = (e: React.MouseEvent) => {
+    if (mobileMenuOpen) {
+      setMobileMenuOpen(false);
+    }
+
+    if (pathname === "/") {
+      e.preventDefault();
+      const lenis = (window as any).__lenis;
+      if (lenis) {
+        lenis.scrollTo(0, { duration: 0.45, immediate: false });
+      } else {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    } else {
+      const lenis = (window as any).__lenis;
+      if (lenis) {
+        lenis.scrollTo(0, { immediate: true });
+      } else {
+        window.scrollTo(0, 0);
+      }
+    }
+  };
+
   return (
     <header
       className="fixed left-0 top-0 z-[1000] flex w-full select-none justify-center px-5 md:px-8"
@@ -140,6 +163,7 @@ export default function Header() {
         <div className="flex flex-1 justify-start">
           <Link
             href="/"
+            onClick={handleLogoClick}
             className="flex select-none items-center justify-start transition-all duration-[400ms] ease-out hover:opacity-90 pl-1 md:pl-4"
           >
             <div className={`relative transition-all duration-[400ms] ease-[cubic-bezier(0.25,1,0.5,1)] ${scrolled ? 'w-[110px] md:w-[130px]' : 'w-[130px] md:w-[160px]'}`}>

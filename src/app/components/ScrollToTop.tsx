@@ -12,9 +12,19 @@ export default function ScrollToTop() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const scrollToTop = () => {
+    const lenis = (window as any).__lenis;
+    if (lenis) {
+      lenis.scrollTo(0, { duration: 0.8 });
+    } else {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
   return (
     <button
-      onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+      type="button"
+      onClick={scrollToTop}
       className={`fixed bottom-6 right-6 z-50 flex h-10 w-10 items-center justify-center rounded-full bg-brown-deep/85 text-cream shadow-lg backdrop-blur-sm transition-all duration-300 hover:bg-brown-dark ${
         visible ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0 pointer-events-none"
       }`}

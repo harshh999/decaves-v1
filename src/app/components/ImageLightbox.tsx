@@ -51,13 +51,25 @@ export default function ImageLightbox({
   if (images.length === 0) return null;
 
   return (
-    <div className="fixed inset-0 z-[100] flex flex-col bg-brown-deep/70 backdrop-blur-lg" onClick={onClose}>
+    <div
+      className="fixed inset-0 z-[9999] flex flex-col bg-brown-deep/85 backdrop-blur-lg"
+      onClick={onClose}
+    >
       <button
-        onClick={(e) => { e.stopPropagation(); onClose(); }}
-        className="absolute right-4 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-sm transition-colors hover:bg-white/20"
-        aria-label="Close"
+        type="button"
+        onClick={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          onClose();
+        }}
+        className="absolute z-50 flex h-11 w-11 items-center justify-center rounded-full bg-white/15 text-white backdrop-blur-sm transition-all hover:bg-white/30 active:scale-95 cursor-pointer focus:outline-none"
+        style={{
+          top: "max(1rem, calc(env(safe-area-inset-top, 0px) + 0.75rem))",
+          right: "max(1rem, calc(env(safe-area-inset-right, 0px) + 0.75rem))",
+        }}
+        aria-label="Close gallery"
       >
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <line x1="18" y1="6" x2="6" y2="18" />
           <line x1="6" y1="6" x2="18" y2="18" />
         </svg>
@@ -66,18 +78,28 @@ export default function ImageLightbox({
       {images.length > 1 && (
         <>
           <button
-            onClick={(e) => { e.stopPropagation(); onPrev(); }}
-            className="absolute left-4 top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-sm transition-colors hover:bg-white/20"
-            aria-label="Previous"
+            type="button"
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              onPrev();
+            }}
+            className="absolute left-4 top-1/2 z-40 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-sm transition-colors hover:bg-white/25 active:scale-95 cursor-pointer focus:outline-none"
+            aria-label="Previous image"
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M15 18l-6-6 6-6" />
             </svg>
           </button>
           <button
-            onClick={(e) => { e.stopPropagation(); onNext(); }}
-            className="absolute right-4 top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-sm transition-colors hover:bg-white/20"
-            aria-label="Next"
+            type="button"
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              onNext();
+            }}
+            className="absolute right-4 top-1/2 z-40 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-sm transition-colors hover:bg-white/25 active:scale-95 cursor-pointer focus:outline-none"
+            aria-label="Next image"
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M9 18l6-6-6-6" />
@@ -133,9 +155,11 @@ export default function ImageLightbox({
       >
         {images.map((src, i) => (
           <button
+            type="button"
             key={i}
             onClick={() => onSelect(i)}
-            className="flex-shrink-0 overflow-hidden rounded border-2 transition-all duration-200"
+            aria-label={`View image ${i + 1}`}
+            className="flex-shrink-0 overflow-hidden rounded border-2 transition-all duration-200 cursor-pointer focus:outline-none"
             style={{
               width: THUMB_W,
               height: THUMB_H,
