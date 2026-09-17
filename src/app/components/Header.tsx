@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import Image from "next/image";
 import CloudinaryImage from "./CloudinaryImage";
 import { siteImage } from "@/data/images";
+import gsap from "gsap";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -23,6 +24,40 @@ export default function Header() {
     width: 0,
     opacity: 0,
   });
+
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!mobileMenuRef.current) return;
+    
+    if (mobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+      gsap.to(mobileMenuRef.current, {
+        opacity: 1,
+        pointerEvents: "auto",
+        duration: 0.5,
+        ease: "power3.out",
+      });
+      gsap.fromTo(
+        ".mobile-nav-item > a",
+        { y: 30, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.6, stagger: 0.1, ease: "power3.out", delay: 0.1 }
+      );
+    } else {
+      document.body.style.overflow = "";
+      gsap.to(mobileMenuRef.current, {
+        opacity: 0,
+        pointerEvents: "none",
+        duration: 0.4,
+        ease: "power2.inOut",
+      });
+    }
+    
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileMenuOpen]);
 
   useEffect(() => {
     const onScroll = () => {
@@ -152,7 +187,7 @@ export default function Header() {
           ))}
         </nav>
 
-        <div className="flex flex-1 justify-end">
+        <div className="flex flex-1 justify-end items-center">
           <div className="hidden md:block">
             <Link
               href="/#contact"
@@ -163,14 +198,71 @@ export default function Header() {
           </div>
 
           <div className="md:hidden">
-            <Link
-              href="/#contact"
-              className="inline-block rounded-full border border-black/20 bg-transparent px-4 py-2 text-[12px] font-medium tracking-[0.1em] text-[#171717] uppercase transition-all duration-[400ms] ease-[cubic-bezier(0.25,1,0.5,1)] hover:bg-black/5 hover:border-black/40"
+            <button
+              onClick={() => setMobileMenuOpen(true)}
+              className="inline-block rounded-full border border-black/20 bg-transparent px-4 py-2 text-[12px] font-medium tracking-[0.1em] text-[#171717] uppercase transition-all duration-[400ms] ease-[cubic-bezier(0.25,1,0.5,1)] active:scale-[0.95]"
             >
-              Contact Us
-            </Link>
+              MENU
+            </button>
           </div>
         </div>
+      </div>
+
+      {/* Mobile Menu Overlay */}
+      <div
+        ref={mobileMenuRef}
+        className="fixed inset-0 z-[1005] flex flex-col justify-center items-center bg-[#F6F2EB]/95 backdrop-blur-md md:hidden pointer-events-none opacity-0"
+        style={{
+          paddingTop: "env(safe-area-inset-top, 0px)",
+          paddingBottom: "env(safe-area-inset-bottom, 0px)",
+          paddingLeft: "env(safe-area-inset-left, 0px)",
+          paddingRight: "env(safe-area-inset-right, 0px)",
+        }}
+      >
+        {/* Close Button */}
+        <button
+          type="button"
+          onClick={() => setMobileMenuOpen(false)}
+          aria-label="Close menu"
+          className="absolute flex h-11 w-11 items-center justify-center rounded-full text-[#352219] transition-all duration-300 hover:opacity-70 active:scale-95 focus:outline-none"
+          style={{
+            top: "max(1.25rem, calc(env(safe-area-inset-top, 0px) + 0.75rem))",
+            right: "max(1.25rem, calc(env(safe-area-inset-right, 0px) + 0.75rem))",
+          }}
+        >
+          <svg
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.25"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="w-[22px] h-[22px]"
+          >
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
+        </button>
+
+        <nav className="flex flex-col items-center gap-10">
+          {[
+            { href: "/about", label: "ABOUT" },
+            { href: "/spaces", label: "SPACES" },
+            { href: "/#contact", label: "CONTACT US" },
+          ].map((link) => (
+            <div key={link.href} className="mobile-nav-item overflow-hidden">
+              <Link
+                href={link.href}
+                onClick={() => setMobileMenuOpen(false)}
+                className="block font-display text-4xl tracking-tight text-[#352219] transition-opacity duration-300 active:opacity-70"
+              >
+                {link.label}
+              </Link>
+            </div>
+          ))}
+        </nav>
       </div>
     </header>
   );

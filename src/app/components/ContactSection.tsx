@@ -136,7 +136,7 @@ export default function ContactSection() {
             <div className="mt-12">
               <div className="group relative overflow-hidden rounded-[16px] md:rounded-[20px]">
                 <CloudinaryImage
-                  src={siteImage("/Biren's Villa/image_1.webp")}
+                  src="https://res.cloudinary.com/diqslwugu/image/upload/v1789582802/Screenshot_2026-09-16_at_11.12.24_PM_uc1ldq.png"
                   alt="De'Caves designed residence"
                   width={1200}
                   height={800}

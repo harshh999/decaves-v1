@@ -7,15 +7,13 @@ import CloudinaryImage from "./CloudinaryImage";
 import { projects } from "@/data/projects";
 
 const images = [
-  projects.find((p) => p.slug === "our-project-p2")?.interiorImages[0] || "",
-  projects.find((p) => p.slug === "our-project-p1")?.interiorImages[2] || "",
-  projects.find((p) => p.slug === "our-project-p4")?.interiorImages[3] || "",
-  projects.find((p) => p.slug === "ankur-bhai")?.interiorImages[0] || "",
-].filter(Boolean);
+  "https://res.cloudinary.com/diqslwugu/image/upload/v1787251347/th1_ds5o3z.webp",
+  "https://res.cloudinary.com/diqslwugu/image/upload/v1789573484/Screenshot_2026-09-16_at_9.05.49_PM_izrwlh.png",
+  "https://res.cloudinary.com/diqslwugu/image/upload/v1789621863/Screenshot_2026-09-17_at_10.38.01_AM_pteyil.png",
+  "https://res.cloudinary.com/diqslwugu/image/upload/v1789625768/Screenshot_2026-09-17_at_11.38.45_AM_cszabf.png"
+];
 
 export default function Hero() {
-  const [current, setCurrent] = useState(0);
-
   const containerRef = useRef<HTMLElement>(null);
   const bgRef = useRef<HTMLDivElement>(null);
   const headlineRef = useRef<HTMLHeadingElement>(null);
@@ -63,14 +61,8 @@ export default function Hero() {
       );
     }, containerRef);
 
-    // Image Slideshow logic
-    const interval = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % images.length);
-    }, 8000);
-
     return () => {
       ctx.revert(); // Cleanup GSAP
-      clearInterval(interval);
     };
   }, []);
 
@@ -84,29 +76,7 @@ export default function Hero() {
     >
       {/* Background Slideshow Container */}
       <div ref={bgRef} className="absolute inset-0 w-full h-full">
-        {images.map((src, i) => (
-          <div
-            key={src}
-            className={`absolute inset-0 transition-opacity duration-[2500ms] ease-in-out ${
-              i === current ? "opacity-100" : "opacity-0"
-            }`}
-          >
-            <CloudinaryImage
-              src={src}
-              alt=""
-              fill
-              sizes="100vw"
-              className="h-full w-full object-cover"
-              style={{
-                transform: i === current ? "scale(1.03)" : "scale(1.0)",
-                filter: "brightness(0.92) contrast(0.96) saturate(0.94)",
-                transition: "transform 12000ms ease-out",
-              }}
-              fetchPriority={i === 0 ? "high" : "low"}
-              loading={i === 0 ? "eager" : "lazy"}
-            />
-          </div>
-        ))}
+        <BackgroundSlideshow />
       </div>
 
       {/* Cinematic Asymmetric Gradient Overlay */}
@@ -214,5 +184,44 @@ export default function Hero() {
         </div>
       </div>
     </section>
+  );
+}
+
+function BackgroundSlideshow() {
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % images.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <>
+      {images.map((src, i) => (
+        <div
+          key={src}
+          className={`absolute inset-0 transition-opacity duration-[2500ms] ease-in-out ${
+            i === current ? "opacity-100" : "opacity-0"
+          }`}
+        >
+          <CloudinaryImage
+            src={src}
+            alt=""
+            fill
+            sizes="100vw"
+            className="h-full w-full object-cover"
+            style={{
+              transform: i === current ? "scale(1.03)" : "scale(1.0)",
+              filter: "brightness(0.92) contrast(0.96) saturate(0.94)",
+              transition: "transform 12000ms ease-out",
+            }}
+            fetchPriority={i === 0 ? "high" : "low"}
+            loading={i === 0 ? "eager" : "lazy"}
+          />
+        </div>
+      ))}
+    </>
   );
 }

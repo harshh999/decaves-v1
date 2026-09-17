@@ -2,13 +2,15 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import ScrollToTop from "../components/ScrollToTop";
 import CloudinaryImage from "../components/CloudinaryImage";
+import LifeAtDecaves from "../components/LifeAtDecaves";
+import Image from "next/image";
 import { siteImage } from "@/data/images";
 
 export default function AboutPage() {
@@ -24,6 +26,37 @@ export default function AboutPage() {
   const ctaRef = useRef<HTMLDivElement>(null);
 
   const [hoveredPrinciple, setHoveredPrinciple] = useState<number | null>(null);
+
+  // Contact form state & validation
+  const [formValues, setFormValues] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    projectType: "",
+    message: "",
+  });
+  const [formErrors, setFormErrors] = useState<Record<string, string>>({});
+  const [formSubmitted, setFormSubmitted] = useState(false);
+
+  const handleFormValidate = () => {
+    const next: Record<string, string> = {};
+    if (!formValues.name.trim()) next.name = "Please enter your name.";
+    if (!formValues.email.trim()) {
+      next.email = "Please enter your email.";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formValues.email.trim())) {
+      next.email = "Please enter a valid email address.";
+    }
+    if (!formValues.message.trim()) next.message = "Please enter a message.";
+    setFormErrors(next);
+    return Object.keys(next).length === 0;
+  };
+
+  const handleFormSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (handleFormValidate()) {
+      setFormSubmitted(true);
+    }
+  };
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -165,8 +198,24 @@ export default function AboutPage() {
         );
       }
 
-      // 7. Philosophy & Vision
+      // 7. Philosophy Manifesto & Supporting Narrative
       if (philosophyRef.current) {
+        gsap.fromTo(
+          ".philosophy-manifesto",
+          { opacity: 0, y: 28 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1.1,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: philosophyRef.current,
+              start: "top 78%",
+              once: true,
+            },
+          }
+        );
+
         gsap.fromTo(
           ".philosophy-col",
           { opacity: 0, y: 20 },
@@ -174,11 +223,11 @@ export default function AboutPage() {
             opacity: 1,
             y: 0,
             duration: 1.0,
-            stagger: 0.15,
+            stagger: 0.12,
             ease: "power3.out",
             scrollTrigger: {
-              trigger: philosophyRef.current,
-              start: "top 80%",
+              trigger: ".philosophy-spread",
+              start: "top 82%",
               once: true,
             },
           }
@@ -205,11 +254,11 @@ export default function AboutPage() {
         );
       }
 
-      // 9. Final CTA
+      // 9. Final Architectural Contact Section
       if (ctaRef.current) {
         gsap.fromTo(
-          ".cta-item",
-          { opacity: 0, y: 16 },
+          ".cta-header-anim",
+          { opacity: 0, y: 20 },
           {
             opacity: 1,
             y: 0,
@@ -218,7 +267,24 @@ export default function AboutPage() {
             ease: "power3.out",
             scrollTrigger: {
               trigger: ctaRef.current,
-              start: "top 85%",
+              start: "top 82%",
+              once: true,
+            },
+          }
+        );
+
+        gsap.fromTo(
+          ".cta-panel-anim",
+          { opacity: 0, y: 32 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1.1,
+            stagger: 0.15,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: ".cta-panels-container",
+              start: "top 80%",
               once: true,
             },
           }
@@ -295,8 +361,8 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-6 divide-y sm:divide-y-0 sm:divide-x divide-[#8A6E5A]/15">
             {/* Metric 1 */}
             <div className="metric-item pt-4 sm:pt-0 sm:px-6 first:sm:pl-0">
-              <div className="font-display text-4xl sm:text-5xl lg:text-6xl text-[#352219] tracking-tight mb-2">
-                25<span className="text-[#8A6E5A]/60 font-light">+</span>
+              <div className="font-sans font-semibold text-4xl sm:text-5xl lg:text-6xl text-[#352219] tracking-tight mb-2">
+                4100<span className="text-[#8A6E5A]/60 font-light">+</span>
               </div>
               <p className="font-sans text-[12px] md:text-[13px] font-medium text-[#8A6E5A] tracking-[0.08em] uppercase">
                 Projects Designed
@@ -305,8 +371,8 @@ export default function AboutPage() {
 
             {/* Metric 2 */}
             <div className="metric-item pt-6 sm:pt-0 sm:px-6">
-              <div className="font-display text-4xl sm:text-5xl lg:text-6xl text-[#352219] tracking-tight mb-2">
-                08<span className="text-[#8A6E5A]/60 font-light">+</span>
+              <div className="font-sans font-semibold text-4xl sm:text-5xl lg:text-6xl text-[#352219] tracking-tight mb-2">
+                38<span className="text-[#8A6E5A]/60 font-light">+</span>
               </div>
               <p className="font-sans text-[12px] md:text-[13px] font-medium text-[#8A6E5A] tracking-[0.08em] uppercase">
                 Years of Experience
@@ -315,8 +381,8 @@ export default function AboutPage() {
 
             {/* Metric 3 */}
             <div className="metric-item pt-6 sm:pt-0 sm:px-6 last:sm:pr-0">
-              <div className="font-display text-4xl sm:text-5xl lg:text-6xl text-[#352219] tracking-tight mb-2">
-                100k<span className="text-[#8A6E5A]/60 font-light">+</span>
+              <div className="font-sans font-semibold text-4xl sm:text-5xl lg:text-6xl text-[#352219] tracking-tight mb-2">
+                1M<span className="text-[#8A6E5A]/60 font-light">+</span>
               </div>
               <p className="font-sans text-[12px] md:text-[13px] font-medium text-[#8A6E5A] tracking-[0.08em] uppercase">
                 Sq. Ft. Crafted
@@ -332,10 +398,10 @@ export default function AboutPage() {
           ref={featuredImageRef}
           className="pt-14 pb-14 md:pt-20 md:pb-20 max-w-[1360px] mx-auto px-6 sm:px-8 lg:px-12 relative z-10"
         >
-          <div className="relative w-full aspect-[16/9] md:aspect-[21/9] max-h-[640px] overflow-hidden rounded-[2px] bg-[#352219]/10 shadow-[0_10px_35px_rgba(53,34,25,0.05)]">
+          <div className="relative w-full aspect-[16/9] md:aspect-[21/9] max-h-[640px] overflow-hidden rounded-[16px] bg-[#352219]/10 shadow-[0_10px_35px_rgba(53,34,25,0.05)]">
             <div className="featured-img-inner absolute inset-0 w-full h-full">
-              <CloudinaryImage
-                src={siteImage("/our_projects_1.webp")}
+              <Image
+                src="/images/about/life/1.jpg"
                 alt="De'Caves architecture landscape view"
                 fill
                 priority
@@ -380,6 +446,11 @@ export default function AboutPage() {
         </section>
 
         {/* ========================================================================= */}
+        {/* SECTION: LIFE AT DE'CAVES (Editorial Office Environment Feature)           */}
+        {/* ========================================================================= */}
+        <LifeAtDecaves />
+
+        {/* ========================================================================= */}
         {/* SECTION 5: BUILT AROUND EXPERIENCE (60/40 Split Composition)               */}
         {/* ========================================================================= */}
         <section
@@ -389,9 +460,9 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
             {/* Image (60% on desktop = 7 cols) */}
             <div className="lg:col-span-7">
-              <div className="split-img-container relative w-full aspect-[4/3] sm:aspect-[16/10] overflow-hidden rounded-[2px] bg-[#352219]/10 shadow-[0_12px_40px_rgba(53,34,25,0.05)]">
-                <CloudinaryImage
-                  src={siteImage("/our_projects_2.webp")}
+              <div className="split-img-container relative w-full aspect-[4/3] sm:aspect-[16/10] overflow-hidden rounded-[16px] bg-[#352219]/10 shadow-[0_12px_40px_rgba(53,34,25,0.05)]">
+                <Image
+                  src="/images/about/life/15.jpg"
                   alt="De'Caves interior architectural spatial experience"
                   fill
                   sizes="(max-width: 1024px) 100vw, 60vw"
@@ -417,83 +488,52 @@ export default function AboutPage() {
               </p>
             </div>
           </div>
-        </section>
-
-        {/* ========================================================================= */}
-        {/* SECTION 6: DESIGN PRINCIPLES (Art-Directed Typographic Statement)         */}
-        {/* ========================================================================= */}
-        <section
-          ref={principlesRef}
-          className="py-16 md:py-24 max-w-[1360px] mx-auto px-6 sm:px-8 lg:px-12 border-t border-b border-[#8A6E5A]/15 relative z-10"
-        >
-          {/* Editorial Principle Flow */}
-          <div className="flex flex-wrap items-center justify-center gap-x-6 sm:gap-x-10 gap-y-3 md:gap-y-4 text-center max-w-4xl mx-auto">
-            {principles.map((item, idx) => (
-              <div
-                key={item}
-                className="principle-item inline-flex items-center group cursor-default"
-                onMouseEnter={() => setHoveredPrinciple(idx)}
-                onMouseLeave={() => setHoveredPrinciple(null)}
-              >
-                <span
-                  className={`font-display text-3xl sm:text-5xl md:text-6xl lg:text-[68px] tracking-[-0.02em] transition-all duration-300 ease-out select-none ${
-                    hoveredPrinciple === idx
-                      ? "text-[#352219] translate-y-[-2px]"
-                      : hoveredPrinciple !== null
-                      ? "text-[#352219]/35"
-                      : "text-[#352219]"
-                  }`}
-                >
-                  {item}
-                </span>
-                {idx < principles.length - 1 && (
-                  <span className="text-[#8A6E5A]/30 text-xl sm:text-3xl md:text-4xl font-light ml-6 sm:ml-10 select-none">
-                    /
-                  </span>
-                )}
-              </div>
-            ))}
-          </div>
-
-          <p className="font-body text-[15px] sm:text-[16px] text-[#5A453A] text-center max-w-xl mx-auto mt-10 md:mt-12 font-light leading-relaxed">
-            Every material choice, architectural volume and passage of light is considered to create an enduring sense of proportion and warmth.
-          </p>
-        </section>
-
-        {/* ========================================================================= */}
-        {/* SECTION 7: PHILOSOPHY & VISION (Confident Structured Statements)           */}
+        </section>        {/* ========================================================================= */}
+        {/* SECTION 7: PHILOSOPHY (Minimal Architectural Manifesto)                    */}
         {/* ========================================================================= */}
         <section
           ref={philosophyRef}
-          className="py-16 md:py-24 max-w-[1360px] mx-auto px-6 sm:px-8 lg:px-12 relative z-10"
+          className="py-24 md:py-36 max-w-[1360px] mx-auto px-6 sm:px-8 lg:px-12 border-t border-[#8A6E5A]/15 relative z-10"
         >
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-start">
-            {/* Philosophy */}
-            <div className="philosophy-col flex flex-col items-start text-left space-y-4">
-              <span className="font-sans text-[12px] md:text-[13px] font-medium tracking-[0.12em] text-[#8A6E5A] uppercase">
-                Our Philosophy
+          {/* Eyebrow Label */}
+          <div className="mb-8 md:mb-12">
+            <span className="font-sans text-[12px] md:text-[13px] font-medium tracking-[0.16em] text-[#8A6E5A] uppercase">
+              OUR PHILOSOPHY
+            </span>
+          </div>
+
+          {/* Hero Manifesto Statement (Visual Anchor) */}
+          <div className="philosophy-manifesto max-w-5xl mb-20 md:mb-32">
+            <h2 className="font-display text-4xl sm:text-6xl md:text-7xl lg:text-[84px] font-normal leading-[1.06] tracking-[-0.025em] text-[#352219]">
+              Spaces should not shout. <br className="hidden sm:block" />
+              They should age beautifully.
+            </h2>
+          </div>
+
+          {/* Asymmetric Editorial Spread for Philosophy & Vision */}
+          <div className="philosophy-spread grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-20 pt-16 border-t border-[#8A6E5A]/15">
+            {/* Philosophy Narrative */}
+            <div className="philosophy-col md:col-span-6 space-y-4">
+              <span className="font-sans text-[11px] md:text-[12px] font-semibold tracking-[0.16em] text-[#8A6E5A] uppercase block">
+                OUR PHILOSOPHY
               </span>
-              
-              <h3 className="font-display text-2xl sm:text-3xl md:text-4xl text-[#352219] leading-snug">
+              <h3 className="font-display text-2xl sm:text-3xl md:text-[32px] text-[#352219] leading-snug">
                 Design with purpose.
               </h3>
-              
-              <p className="font-body text-[16px] text-[#5A453A] leading-[1.8] font-light max-w-md">
+              <p className="font-body text-[16px] sm:text-[17px] text-[#5A453A] leading-[1.8] font-light max-w-lg">
                 Every decision should have a reason. From proportion and circulation to material and light, we create spaces where each element contributes to the whole.
               </p>
             </div>
 
-            {/* Vision */}
-            <div className="philosophy-col flex flex-col items-start text-left space-y-4 md:border-l md:border-[#8A6E5A]/15 md:pl-16">
-              <span className="font-sans text-[12px] md:text-[13px] font-medium tracking-[0.12em] text-[#8A6E5A] uppercase">
-                Our Vision
+            {/* Vision Narrative */}
+            <div className="philosophy-col md:col-span-6 space-y-4 md:border-l md:border-[#8A6E5A]/15 md:pl-12 lg:pl-20">
+              <span className="font-sans text-[11px] md:text-[12px] font-semibold tracking-[0.16em] text-[#8A6E5A] uppercase block">
+                OUR VISION
               </span>
-              
-              <h3 className="font-display text-2xl sm:text-3xl md:text-4xl text-[#352219] leading-snug">
+              <h3 className="font-display text-2xl sm:text-3xl md:text-[32px] text-[#352219] leading-snug">
                 Spaces that remain relevant.
               </h3>
-              
-              <p className="font-body text-[16px] text-[#5A453A] leading-[1.8] font-light max-w-md">
+              <p className="font-body text-[16px] sm:text-[17px] text-[#5A453A] leading-[1.8] font-light max-w-lg">
                 We aim to create architecture and interiors that move beyond passing trends and continue to feel considered, personal and appropriate over time.
               </p>
             </div>
@@ -501,106 +541,297 @@ export default function AboutPage() {
         </section>
 
         {/* ========================================================================= */}
-        {/* SECTION 8: AREAS OF PRACTICE (Clean Three-Column Grid)                    */}
+        {/* SECTION 8: AREAS OF PRACTICE (Full-Width Numbered Editorial Index)         */}
         {/* ========================================================================= */}
         <section
           ref={servicesRef}
-          className="py-16 md:py-24 max-w-[1360px] mx-auto px-6 sm:px-8 lg:px-12 border-t border-[#8A6E5A]/15 relative z-10"
+          className="py-20 md:py-36 max-w-[1360px] mx-auto px-6 sm:px-8 lg:px-12 border-t border-[#8A6E5A]/15 relative z-10"
         >
-          {/* Main Heading */}
-          <div className="mb-12 md:mb-16">
-            <h2 className="font-display text-3xl sm:text-4xl md:text-[42px] text-[#352219]">
+          {/* Main Section Header */}
+          <div className="service-col mb-16 md:mb-24">
+            <span className="font-sans text-[12px] md:text-[13px] font-medium tracking-[0.16em] text-[#8A6E5A] uppercase block mb-3">
+              PRACTICE DISCIPLINES
+            </span>
+            <h2 className="font-display text-4xl sm:text-5xl md:text-6xl tracking-[-0.025em] text-[#352219]">
               Areas of Practice
             </h2>
           </div>
 
-          {/* Three-Column Editorial Disciplines with Clear Numbering */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12 lg:gap-16">
+          {/* Numbered Editorial Index List */}
+          <div className="divide-y divide-[#8A6E5A]/20 border-t border-b border-[#8A6E5A]/20">
             {/* 01 Architecture */}
-            <div className="service-col flex flex-col items-start border-t border-[#8A6E5A]/25 pt-6 group">
-              <span className="font-mono text-[12px] font-medium text-[#8A6E5A] mb-4">
-                01
-              </span>
-              <h3 className="font-display text-2xl md:text-[26px] text-[#352219] mb-3">
-                Architecture
-              </h3>
-              <p className="font-body text-[15px] sm:text-[16px] text-[#5A453A] leading-[1.75] font-light">
-                Thoughtful architectural spaces shaped by context, function and everyday life.
-              </p>
+            <div className="service-col py-10 md:py-14 group cursor-default transition-colors duration-400">
+              <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-start md:items-center">
+                <div className="md:col-span-2">
+                  <span className="font-mono text-[13px] font-medium text-[#8A6E5A] tracking-widest block">
+                    01
+                  </span>
+                </div>
+                <div className="md:col-span-5 flex items-center justify-between pr-4">
+                  <h3 className="font-display text-3xl sm:text-4xl md:text-[44px] text-[#352219] group-hover:text-[#8A6E5A] group-hover:translate-x-1.5 transition-all duration-300">
+                    Architecture
+                  </h3>
+                </div>
+                <div className="md:col-span-4">
+                  <p className="font-body text-[15px] sm:text-[17px] text-[#5A453A] leading-[1.75] font-light">
+                    Thoughtful architectural spaces shaped by context, function and everyday life.
+                  </p>
+                </div>
+                <div className="md:col-span-1 text-right hidden md:block">
+                  <span className="text-xl text-[#8A6E5A] opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 inline-block">
+                    →
+                  </span>
+                </div>
+              </div>
             </div>
 
             {/* 02 Interior Design */}
-            <div className="service-col flex flex-col items-start border-t border-[#8A6E5A]/25 pt-6 group">
-              <span className="font-mono text-[12px] font-medium text-[#8A6E5A] mb-4">
-                02
-              </span>
-              <h3 className="font-display text-2xl md:text-[26px] text-[#352219] mb-3">
-                Interior Design
-              </h3>
-              <p className="font-body text-[15px] sm:text-[16px] text-[#5A453A] leading-[1.75] font-light">
-                Interiors where material, proportion and atmosphere come together with clarity.
-              </p>
+            <div className="service-col py-10 md:py-14 group cursor-default transition-colors duration-400">
+              <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-start md:items-center">
+                <div className="md:col-span-2">
+                  <span className="font-mono text-[13px] font-medium text-[#8A6E5A] tracking-widest block">
+                    02
+                  </span>
+                </div>
+                <div className="md:col-span-5 flex items-center justify-between pr-4">
+                  <h3 className="font-display text-3xl sm:text-4xl md:text-[44px] text-[#352219] group-hover:text-[#8A6E5A] group-hover:translate-x-1.5 transition-all duration-300">
+                    Interior Design
+                  </h3>
+                </div>
+                <div className="md:col-span-4">
+                  <p className="font-body text-[15px] sm:text-[17px] text-[#5A453A] leading-[1.75] font-light">
+                    Interiors where material, proportion and atmosphere come together with clarity.
+                  </p>
+                </div>
+                <div className="md:col-span-1 text-right hidden md:block">
+                  <span className="text-xl text-[#8A6E5A] opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 inline-block">
+                    →
+                  </span>
+                </div>
+              </div>
             </div>
 
             {/* 03 Spatial Experience */}
-            <div className="service-col flex flex-col items-start border-t border-[#8A6E5A]/25 pt-6 group">
-              <span className="font-mono text-[12px] font-medium text-[#8A6E5A] mb-4">
-                03
-              </span>
-              <h3 className="font-display text-2xl md:text-[26px] text-[#352219] mb-3">
-                Spatial Experience
-              </h3>
-              <p className="font-body text-[15px] sm:text-[16px] text-[#5A453A] leading-[1.75] font-light">
-                A considered approach to the details that shape how a space is seen, felt and lived in.
-              </p>
+            <div className="service-col py-10 md:py-14 group cursor-default transition-colors duration-400">
+              <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-start md:items-center">
+                <div className="md:col-span-2">
+                  <span className="font-mono text-[13px] font-medium text-[#8A6E5A] tracking-widest block">
+                    03
+                  </span>
+                </div>
+                <div className="md:col-span-5 flex items-center justify-between pr-4">
+                  <h3 className="font-display text-3xl sm:text-4xl md:text-[44px] text-[#352219] group-hover:text-[#8A6E5A] group-hover:translate-x-1.5 transition-all duration-300">
+                    Spatial Experience
+                  </h3>
+                </div>
+                <div className="md:col-span-4">
+                  <p className="font-body text-[15px] sm:text-[17px] text-[#5A453A] leading-[1.75] font-light">
+                    A considered approach to the details that shape how a space is seen, felt and lived in.
+                  </p>
+                </div>
+                <div className="md:col-span-1 text-right hidden md:block">
+                  <span className="text-[#8A6E5A] text-xl opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 inline-block">
+                    →
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
         </section>
 
         {/* ========================================================================= */}
-        {/* SECTION 9: FINAL CTA (Warm, Human, Restrained)                            */}
+        {/* SECTION 9: ARCHITECTURAL CONTACT COMPOSITION (Editorial 2-Panel Layout)     */}
         {/* ========================================================================= */}
         <section
           ref={ctaRef}
-          className="pt-12 pb-20 md:pt-16 md:pb-28 max-w-[1360px] mx-auto px-6 sm:px-8 lg:px-12 border-t border-[#8A6E5A]/15 relative z-10"
+          className="py-20 md:py-36 max-w-[1360px] mx-auto px-6 sm:px-8 lg:px-12 border-t border-[#8A6E5A]/15 relative z-10"
         >
-          <div className="relative rounded-[4px] overflow-hidden bg-[#ECE7E1] border border-[#8A6E5A]/20 p-8 sm:p-12 md:p-16 lg:p-20 shadow-[0_8px_30px_rgba(53,34,25,0.03)]">
-            {/* Subtle Architectural Atmosphere Accent */}
-            <div className="absolute right-0 bottom-0 top-0 w-full lg:w-1/2 opacity-15 pointer-events-none select-none">
-              <CloudinaryImage
-                src={siteImage("/images/cta/cta-architectural-exterior.webp")}
-                alt="Architecture perspective"
-                fill
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover object-right warm-editorial-filter"
-              />
-              <div className="absolute inset-0 bg-gradient-to-r from-[#ECE7E1] via-[#ECE7E1]/80 to-transparent" />
-            </div>
-
-            <div className="relative z-10 max-w-2xl">
-              <div className="cta-item mb-4">
-                <span className="font-sans text-[12px] md:text-[13px] font-medium tracking-[0.12em] text-[#8A6E5A] uppercase">
-                  Start a Conversation
+          {/* Editorial Header */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-end mb-12 md:mb-16">
+            <div className="lg:col-span-7">
+              <div className="cta-header-anim mb-4 sm:mb-6">
+                <span className="font-mono text-[11px] sm:text-[12px] font-medium tracking-[0.22em] text-[#8A6E5A] uppercase block">
+                  CONTACT US
                 </span>
               </div>
-
-              <h2 className="cta-item font-display text-3xl sm:text-5xl md:text-6xl text-[#352219] leading-[1.08] tracking-[-0.02em] mb-6">
-                A space that feels right.
+              <h2 className="cta-header-anim font-display text-4xl sm:text-6xl lg:text-[72px] leading-[1.04] tracking-[-0.025em] text-[#352219] max-w-[650px]">
+                Let&apos;s create a space that feels right.
               </h2>
-
-              <p className="cta-item font-body text-[16px] sm:text-[17px] text-[#5A453A] font-light leading-relaxed mb-10 max-w-lg">
-                Every project begins with a conversation. Let&apos;s discuss how we can bring your architectural vision into reality.
+            </div>
+            <div className="lg:col-span-5 lg:justify-self-end">
+              <p className="cta-header-anim font-body text-[16px] sm:text-[18px] text-[#5A453A] font-light leading-[1.7] max-w-[420px]">
+                Every project begins with a conversation. Tell us about your space, your ideas, and what you want it to become.
               </p>
+            </div>
+          </div>
 
-              <div className="cta-item">
-                <Link
-                  href="/#contact"
-                  className="inline-flex items-center gap-3 rounded-full bg-[#352219] text-[#ECE7E1] px-8 py-4 text-[13px] font-medium tracking-[0.12em] uppercase transition-all duration-300 ease-out hover:bg-[#5A453A] active:scale-[0.98] group"
-                >
-                  <span>Contact Us</span>
-                  <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-                </Link>
+          {/* Two-Panel Architectural Body Composition */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-stretch cta-panels-container">
+            {/* Left Panel: De'Caves Philosophy / Visual Panel */}
+            <div className="cta-panel-anim rounded-[28px] bg-[#171310] p-8 sm:p-10 lg:p-12 text-[#F2F0EB] flex flex-col justify-between overflow-hidden shadow-2xl border border-[#26201B] h-full min-h-[560px]">
+              <div>
+                <span className="font-mono text-[11px] font-medium tracking-[0.22em] text-[#B9B1A9] uppercase mb-4 block">
+                  DE&apos;CAVES PHILOSOPHY
+                </span>
+                <h3 className="font-display text-2xl sm:text-3xl lg:text-[36px] text-[#F2F0EB] leading-[1.18] tracking-tight mb-4 max-w-lg">
+                  Spaces should not shout. They should age beautifully.
+                </h3>
+                <p className="font-body text-[14px] sm:text-[15px] text-[#B9B1A9] leading-[1.7] font-light max-w-md mb-8">
+                  We design with intention, considering how architecture, material, light and everyday life come together over time.
+                </p>
               </div>
+
+              {/* Architectural Office Photo inside Dark Panel */}
+              <div className="group relative w-full h-[260px] sm:h-[300px] lg:h-[320px] overflow-hidden rounded-[18px] mt-auto border border-white/10">
+                <Image
+                  src="/images/about/life/14.jpg"
+                  alt="De'Caves Studio Environment"
+                  fill
+                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#171310]/60 via-transparent to-transparent pointer-events-none" />
+              </div>
+            </div>
+
+            {/* Right Panel: Minimal Contact Form */}
+            <div className="cta-panel-anim rounded-[28px] bg-[#F8F6F1] border border-[#E6E0D5] p-8 sm:p-10 lg:p-12 text-[#352219] flex flex-col justify-between h-full min-h-[560px] shadow-sm">
+              {formSubmitted ? (
+                <div className="flex h-full min-h-[440px] flex-col items-center justify-center text-center my-auto py-8">
+                  <span className="flex h-14 w-14 items-center justify-center rounded-full bg-[#171310] text-[#F2F0EB] mb-6">
+                    <Check className="h-6 w-6" strokeWidth={1.5} />
+                  </span>
+                  <span className="font-mono text-[11px] font-medium tracking-[0.2em] text-[#8A6E5A] uppercase mb-2">
+                    ENQUIRY RECEIVED
+                  </span>
+                  <h3 className="font-display text-3xl sm:text-4xl text-[#352219] tracking-tight mb-3">
+                    Thank you
+                  </h3>
+                  <p className="font-body text-[14px] sm:text-[15px] leading-relaxed text-[#5A453A] font-light max-w-[360px] mb-8">
+                    We&apos;ve received your message and will reach out to discuss your space within 24 hours.
+                  </p>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setFormSubmitted(false);
+                      setFormValues({ name: "", email: "", phone: "", projectType: "", message: "" });
+                      setFormErrors({});
+                    }}
+                    className="inline-flex items-center gap-2 rounded-full border border-[#352219]/30 px-7 py-3 text-[11px] font-mono tracking-[0.18em] uppercase text-[#352219] transition-colors duration-300 hover:bg-[#352219] hover:text-[#F2F0EB] outline-none cursor-pointer"
+                  >
+                    Send another enquiry
+                  </button>
+                </div>
+              ) : (
+                <form onSubmit={handleFormSubmit} noValidate className="flex flex-col justify-between h-full gap-6">
+                  <div>
+                    <div className="mb-6">
+                      <span className="font-mono text-[11px] font-medium tracking-[0.22em] text-[#8A6E5A] uppercase mb-2 block">
+                        START A CONVERSATION
+                      </span>
+                      <h3 className="font-display text-2xl sm:text-3xl text-[#352219] tracking-tight">
+                        Tell us about your project.
+                      </h3>
+                    </div>
+
+                    <div className="space-y-5">
+                      {/* Name & Email Row */}
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                        <div className="flex flex-col">
+                          <label htmlFor="cta-name" className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-[#8A6E5A] mb-1.5">
+                            FULL NAME <span className="text-red-700">*</span>
+                          </label>
+                          <input
+                            id="cta-name"
+                            type="text"
+                            placeholder="Your name"
+                            value={formValues.name}
+                            onChange={(e) => setFormValues({ ...formValues, name: e.target.value })}
+                            className="w-full bg-transparent border-b border-[#D8D0C5] py-2.5 text-[14px] text-[#352219] placeholder:text-[#A09587] outline-none transition-colors duration-300 focus:border-[#171310] font-body"
+                          />
+                          {formErrors.name && (
+                            <p className="text-[11px] text-red-700 mt-1 tracking-wide font-mono">{formErrors.name}</p>
+                          )}
+                        </div>
+
+                        <div className="flex flex-col">
+                          <label htmlFor="cta-email" className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-[#8A6E5A] mb-1.5">
+                            EMAIL <span className="text-red-700">*</span>
+                          </label>
+                          <input
+                            id="cta-email"
+                            type="email"
+                            placeholder="you@example.com"
+                            value={formValues.email}
+                            onChange={(e) => setFormValues({ ...formValues, email: e.target.value })}
+                            className="w-full bg-transparent border-b border-[#D8D0C5] py-2.5 text-[14px] text-[#352219] placeholder:text-[#A09587] outline-none transition-colors duration-300 focus:border-[#171310] font-body"
+                          />
+                          {formErrors.email && (
+                            <p className="text-[11px] text-red-700 mt-1 tracking-wide font-mono">{formErrors.email}</p>
+                          )}
+                        </div>
+                      </div>
+
+                      {/* Phone & Project Type Row */}
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                        <div className="flex flex-col">
+                          <label htmlFor="cta-phone" className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-[#8A6E5A] mb-1.5">
+                            PHONE
+                          </label>
+                          <input
+                            id="cta-phone"
+                            type="tel"
+                            placeholder="Your phone number"
+                            value={formValues.phone}
+                            onChange={(e) => setFormValues({ ...formValues, phone: e.target.value })}
+                            className="w-full bg-transparent border-b border-[#D8D0C5] py-2.5 text-[14px] text-[#352219] placeholder:text-[#A09587] outline-none transition-colors duration-300 focus:border-[#171310] font-body"
+                          />
+                        </div>
+
+                        <div className="flex flex-col">
+                          <label htmlFor="cta-project" className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-[#8A6E5A] mb-1.5">
+                            PROJECT TYPE
+                          </label>
+                          <input
+                            id="cta-project"
+                            type="text"
+                            placeholder="Architecture / Interior Design / Other"
+                            value={formValues.projectType}
+                            onChange={(e) => setFormValues({ ...formValues, projectType: e.target.value })}
+                            className="w-full bg-transparent border-b border-[#D8D0C5] py-2.5 text-[14px] text-[#352219] placeholder:text-[#A09587] outline-none transition-colors duration-300 focus:border-[#171310] font-body"
+                          />
+                        </div>
+                      </div>
+
+                      {/* Message Field */}
+                      <div className="flex flex-col pt-1">
+                        <label htmlFor="cta-message" className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-[#8A6E5A] mb-1.5">
+                          MESSAGE <span className="text-red-700">*</span>
+                        </label>
+                        <textarea
+                          id="cta-message"
+                          rows={3}
+                          placeholder="Tell us a little about your project..."
+                          value={formValues.message}
+                          onChange={(e) => setFormValues({ ...formValues, message: e.target.value })}
+                          className="w-full bg-transparent border-b border-[#D8D0C5] py-2.5 text-[14px] text-[#352219] placeholder:text-[#A09587] outline-none transition-colors duration-300 focus:border-[#171310] font-body resize-none"
+                        />
+                        {formErrors.message && (
+                          <p className="text-[11px] text-red-700 mt-1 tracking-wide font-mono">{formErrors.message}</p>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+
+                  <button
+                    type="submit"
+                    className="inline-flex items-center justify-center gap-3 rounded-full bg-[#171310] text-[#F2F0EB] px-8 py-4 text-[12px] font-mono tracking-[0.18em] uppercase transition-all duration-300 ease-out hover:bg-[#352219] active:scale-[0.98] group mt-4 self-start cursor-pointer shadow-sm"
+                  >
+                    <span>SEND AN ENQUIRY</span>
+                    <span className="text-base transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 inline-block">↗</span>
+                  </button>
+                </form>
+              )}
             </div>
           </div>
         </section>

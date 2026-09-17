@@ -10,26 +10,37 @@ import { siteImage } from "@/data/images";
 
 const projects = [
   {
-    title: "The Floating boxes ",
-    location: "Vadodara",
-    year: "2026",
-    image: "https://res.cloudinary.com/diqslwugu/image/upload/c_limit,w_1920/f_auto/q_auto/v1787238405/floatingboxes2_wpxpwj.webp",
-    href: "/spaces/our-project-p1",
-  },
-  {
-    title: "The Hanging Pyramids ",
-    location: "Sherkhi, Vadodara",
-    year: "2026",
+    number: "01",
+    title: "The Hanging Pyramids",
+    location: "Woods Ville, Vadodara",
+    year: "2025",
     image: "https://res.cloudinary.com/diqslwugu/image/upload/c_limit,w_1920/f_auto/q_auto/v1787252823/ay_mggfm9.webp",
     href: "/spaces/our-project-p2",
   },
   {
-    title: "Villa Hacienda",
-    location: "Vadodara",
-    year: "2026",
-    image: "https://res.cloudinary.com/wkqz5bnk/image/upload/c_limit,w_1920/f_auto/q_auto/v1/our-project-p3/image-4?_a=BAVT+ODY0",
-    href: "/spaces/our-project-p3",
+    number: "02",
+    title: "Tathastu",
+    location: "Woods Ville, Vadodara",
+    year: "2025",
+    image: "https://res.cloudinary.com/diqslwugu/image/upload/v1789573486/Screenshot_2026-09-16_at_9.06.45_PM_ssrxt4.png",
+    href: "/spaces/tathastu-woods-ville",
   },
+  {
+    number: "03",
+    title: "The Cottage House",
+    location: "",
+    year: "2025",
+    image: "https://res.cloudinary.com/diqslwugu/image/upload/v1789576016/Screenshot_2026-09-16_at_9.55.00_PM_h0jjsn.png",
+    href: "/spaces/cottage-house",
+  },
+  {
+    number: "04",
+    title: "Villa Hacienda",
+    location: "Sherkhi, Vadodara",
+    year: "2022",
+    image: "https://res.cloudinary.com/diqslwugu/image/upload/v1789582804/Screenshot_2026-09-16_at_11.12.33_PM_rbovmg.png",
+    href: "/spaces/our-project-p3",
+  }
 ];
 
 function ProjectCard({ project }: { project: (typeof projects)[0] }) {
@@ -42,12 +53,12 @@ function ProjectCard({ project }: { project: (typeof projects)[0] }) {
     gsap.registerPlugin(ScrollTrigger);
 
     const ctx = gsap.context(() => {
-      // Scale width from 85% to 100% as it scrolls into center
+      // Reveal with clip-path (GPU accelerated) instead of layout-triggering width
       gsap.fromTo(
         wrapperRef.current,
-        { width: "85%" },
+        { clipPath: "inset(0% 7.5%)" },
         {
-          width: "100%",
+          clipPath: "inset(0% 0%)",
           ease: "none",
           scrollTrigger: {
             trigger: containerRef.current,
@@ -78,13 +89,16 @@ function ProjectCard({ project }: { project: (typeof projects)[0] }) {
     return () => ctx.revert();
   }, []);
 
+  const Container = project.href ? "a" : "div";
+  const containerProps = project.href ? { href: project.href } : {};
+
   return (
     <div ref={containerRef} className="project-card relative h-[100svh] w-full overflow-hidden">
       <div
         ref={wrapperRef}
-        className="relative mx-auto flex h-full items-center justify-center overflow-hidden bg-[#F5F3EE]"
+        className="relative w-full h-full flex items-center justify-center overflow-hidden bg-[#F5F3EE]"
       >
-        {project.image.startsWith("http") ? (
+        {project.image.startsWith("http") || project.image.startsWith("/") ? (
           <img
             ref={imgRef as any}
             src={project.image}
@@ -105,7 +119,7 @@ function ProjectCard({ project }: { project: (typeof projects)[0] }) {
         )}
       </div>
 
-      <a href={project.href} className="group absolute inset-0 z-10 flex flex-col justify-end">
+      <Container {...containerProps} className="group absolute inset-0 z-10 flex flex-col justify-end">
         {/* Permanent Gradient Overlay */}
         <div
           className="absolute inset-0 pointer-events-none"
@@ -117,9 +131,10 @@ function ProjectCard({ project }: { project: (typeof projects)[0] }) {
         {/* Permanent Text Overlay Container */}
         <div className="relative z-20 w-full px-6 pb-6 md:w-[65%] md:px-12 md:pb-8 lg:w-[42%] xl:w-[38%] xl:px-12 xl:pb-10">
           <h3
-            className="font-serif text-[28px] md:text-[34px] lg:text-[38px] leading-tight drop-shadow-sm"
+            className="font-serif text-[28px] md:text-[34px] lg:text-[38px] leading-tight drop-shadow-sm flex items-baseline gap-4"
             style={{ fontWeight: 400, color: 'rgba(255, 255, 255, 0.95)' }}
           >
+            {project.number && <span className="font-sans text-[12px] md:text-[14px] font-bold tracking-[0.2em] opacity-80">{project.number}</span>}
             {project.title}
           </h3>
 
@@ -143,7 +158,7 @@ function ProjectCard({ project }: { project: (typeof projects)[0] }) {
             <span>{project.year}</span>
           </div>
         </div>
-      </a>
+      </Container>
     </div>
   );
 }

@@ -4,11 +4,12 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import CloudinaryImage from "./CloudinaryImage";
+import Image from "next/image";
 import { siteImage } from "@/data/images";
 
 export default function About() {
   const [hovered, setHovered] = useState(false);
-  
+
   const sectionRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);
   const labelRef = useRef<HTMLDivElement>(null);
@@ -44,7 +45,7 @@ export default function About() {
         ],
         { opacity: 0, y: 28 }
       );
-      
+
       gsap.set(imageRef.current, { scale: 1.04 });
 
       // Subtle Image Reveal
@@ -134,7 +135,7 @@ export default function About() {
         <line x1="1450" y1="500" x2="1600" y2="500" stroke="#A18E7C" strokeWidth="0.8" strokeDasharray="4 4" />
         <line x1="0" y1="800" x2="250" y2="800" stroke="#A18E7C" strokeWidth="0.8" />
         <line x1="1300" y1="800" x2="1600" y2="800" stroke="#A18E7C" strokeWidth="0.8" />
- 
+
         {/* Column Grid Axes */}
         <line x1="180" y1="0" x2="180" y2="150" stroke="#A18E7C" strokeWidth="0.8" />
         <line x1="180" y1="850" x2="180" y2="1000" stroke="#A18E7C" strokeWidth="0.8" />
@@ -144,7 +145,7 @@ export default function About() {
         <line x1="780" y1="880" x2="780" y2="1000" stroke="#A18E7C" strokeWidth="0.8" />
         <line x1="1380" y1="0" x2="1380" y2="180" stroke="#A18E7C" strokeWidth="0.8" />
         <line x1="1380" y1="820" x2="1380" y2="1000" stroke="#A18E7C" strokeWidth="0.8" />
- 
+
         {/* Column Grid Axis Bubble Labels */}
         <g transform="translate(180, 24)" className="stroke-[#A18E7C] fill-none" strokeWidth="0.8">
           <circle cx="0" cy="0" r="10" fill="#ECE7E1" />
@@ -233,8 +234,8 @@ export default function About() {
               onMouseLeave={() => setHovered(false)}
             >
               <div ref={imageRef} className="absolute inset-0 w-full h-full">
-                <CloudinaryImage
-                  src={siteImage("/images/about/founders.webp")}
+                <Image
+                  src="https://res.cloudinary.com/wkqz5bnk/image/upload/c_limit,w_3840/f_auto/q_auto/v1/images/about/founders?_a=BAVT+ODY0"
                   alt="De'Caves founders"
                   width={1600}
                   height={2000}
@@ -257,7 +258,7 @@ export default function About() {
 
           {/* Right Column: Centered Editorial Content */}
           <div className="flex flex-col justify-center text-left max-w-[560px] z-10 pt-4">
-            
+
             {/* Label */}
             <div ref={labelRef} className="mb-8 text-left">
               <span
@@ -308,7 +309,7 @@ export default function About() {
                 <span className="absolute bottom-0 left-0 w-full h-[1px] bg-[#4A2D1F] origin-left transform scale-x-0 transition-transform duration-450 ease-out group-hover:scale-x-100" />
               </a>
             </div>
-            
+
           </div>
         </div>
       </div>

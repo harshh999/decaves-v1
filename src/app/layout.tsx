@@ -19,9 +19,6 @@ export const metadata: Metadata = {
   title: "De'Caves — Architecture | Interiors | Design",
   description:
     "De'Caves is an architecture and interiors studio crafting warm, intentional spaces that tell your story.",
-  icons: {
-    icon: cldUrl("/De'Caves_logo.webp"),
-  },
 };
 
 import SmoothScroll from "./components/SmoothScroll";

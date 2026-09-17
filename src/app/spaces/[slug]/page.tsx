@@ -42,25 +42,23 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
               {project.title}
             </h1>
             <div className="mx-auto mt-10 flex w-full flex-wrap justify-center border-t-2 border-brown/20 pt-8 md:mt-14 md:pt-10">
-              {project.client && (
+              {project.location && (
                 <div className="w-1/2 px-4 py-3 text-center md:w-1/4 md:py-0">
-                  <p className="mb-1 text-xs font-medium tracking-wider text-black/80 uppercase md:text-sm">Client</p>
-                  <p className="text-sm leading-relaxed text-brown-deep md:text-base">{project.client}</p>
+                  <p className="mb-1 text-xs font-medium tracking-wider text-black/80 uppercase md:text-sm">Location</p>
+                  <p className="text-sm leading-relaxed text-brown-deep md:text-base">{project.location}</p>
                 </div>
               )}
-              <div className="w-1/2 px-4 py-3 text-center md:w-1/4 md:py-0">
-                <p className="mb-1 text-xs font-medium tracking-wider text-black/80 uppercase md:text-sm">Location</p>
-                <p className="text-sm leading-relaxed text-brown-deep md:text-base">{project.location}</p>
-              </div>
-              {project.area && (
+              {project.completion && (
                 <div className="w-1/2 px-4 py-3 text-center md:w-1/4 md:py-0">
-                  <p className="mb-1 text-xs font-medium tracking-wider text-black/80 uppercase md:text-sm">Area</p>
-                  <p className="text-sm leading-relaxed text-brown-deep md:text-base">{project.area}</p>
+                  <p className="mb-1 text-xs font-medium tracking-wider text-black/80 uppercase md:text-sm">Completion</p>
+                  <p className="text-sm leading-relaxed text-brown-deep md:text-base">{project.completion}</p>
                 </div>
               )}
               <div className="w-1/2 px-4 py-3 text-center md:w-1/4 md:py-0">
                 <p className="mb-1 text-xs font-medium tracking-wider text-black/80 uppercase md:text-sm">Status</p>
-                <p className="text-sm leading-relaxed text-brown-deep md:text-base">Completed</p>
+                <p className="text-sm leading-relaxed text-brown-deep md:text-base">
+                  {project.status === "Ongoing" ? "ONGOING" : "Completed"}
+                </p>
               </div>
             </div>
           </div>
