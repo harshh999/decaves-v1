@@ -55,6 +55,21 @@ export default function AboutPage() {
     e.preventDefault();
     if (handleFormValidate()) {
       setFormSubmitted(true);
+      
+      const text = `Hello De'Caves,
+
+I would like to enquire about a project.
+
+Name: ${formValues.name}
+Email: ${formValues.email}
+Project / Subject: ${formValues.projectType || "N/A"}
+Message: ${formValues.message}
+
+Thank you.`;
+
+      const encodedText = encodeURIComponent(text);
+      const whatsappUrl = `https://wa.me/919662320660?text=${encodedText}`;
+      window.open(whatsappUrl, '_blank');
     }
   };
 

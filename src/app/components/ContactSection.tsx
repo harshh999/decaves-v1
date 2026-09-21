@@ -104,7 +104,24 @@ export default function ContactSection() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (validate()) setSubmitted(true);
+    if (validate()) {
+      setSubmitted(true);
+      
+      const text = `Hello De'Caves,
+
+I would like to enquire about a project.
+
+Name: ${values.name}
+Email: ${values.email}
+Project / Subject: ${values.subject || "N/A"}
+Message: ${values.message}
+
+Thank you.`;
+
+      const encodedText = encodeURIComponent(text);
+      const whatsappUrl = `https://wa.me/919662320660?text=${encodedText}`;
+      window.open(whatsappUrl, '_blank');
+    }
   };
 
   return (

@@ -216,10 +216,10 @@ export default function Footer() {
                 design@dcaves.in
               </a>
               <a
-                href="tel:+91898899133"
+                href="tel:+919898899133"
                 className="hover:text-[#F2F1ED] transition-colors duration-250 w-fit"
               >
-                +91 8988 99133
+                +91 98988 99133
               </a>
               <p className="leading-relaxed">
                 Vadodara · Gujarat · India
