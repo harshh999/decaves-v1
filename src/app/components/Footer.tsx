@@ -63,7 +63,7 @@ export default function Footer() {
     <footer ref={footerRef} className="w-full flex flex-col overflow-hidden bg-[#0B1016]">
 
       {/* 1. Upper Hero Image Section (72% total desktop height) */}
-      <div className="relative w-full h-[50vh] md:h-[72vh] overflow-hidden select-none pointer-events-none">
+      <div className="relative w-full h-[260px] md:h-[72vh] overflow-hidden select-none pointer-events-none">
         {/* Full Bleed Image */}
         <Image
           src="/images/footer/footer-architecture.webp"
@@ -105,23 +105,21 @@ export default function Footer() {
 
       {/* 2. Lower Footer Information Section */}
       <div 
-        className="footer-info-section relative z-30 w-full bg-[#0B1016] text-[#F2F1ED]"
+        className="footer-info-section relative z-30 w-full bg-[#0B1016] text-[#F2F1ED] px-[32px] pt-[36px] pb-[32px] md:px-[48px] md:pt-[48px] md:pb-[50px]"
         style={{
           maxWidth: "1120px",
           margin: "0 auto",
-          padding: "48px 48px 50px",
           boxSizing: "border-box"
         }}
       >
 
         {/* Three main horizontal columns */}
         <div 
-          className="w-full grid grid-cols-1 md:grid-cols-[330px_220px_260px] items-start justify-start"
-          style={{ gap: "150px" }}
+          className="w-full flex flex-col md:grid md:grid-cols-[330px_220px_260px] items-start justify-start md:gap-[150px]"
         >
 
           {/* Column 1 (Brand) */}
-          <div className="footer-col flex flex-col items-start justify-start text-left w-full">
+          <div className="footer-col flex flex-col items-start justify-start text-left w-full mb-[48px] md:mb-0">
             {/* Complete logo — single image, no borders, no wrappers */}
             <img
               src="/footer-logo-transparent.png"
@@ -174,14 +172,13 @@ export default function Footer() {
           </div>
 
           {/* Column 2 (Explore) */}
-          <div className="footer-col flex flex-col items-start text-left self-start">
+          <div className="footer-col flex flex-col items-start text-left self-start mb-[56px] md:mb-0">
             <h3 
-              className="font-sans text-[11px] font-bold tracking-[0.2em] text-[#C7C9C7] uppercase"
-              style={{ marginBottom: "28px" }}
+              className="font-sans text-[11px] font-bold tracking-[0.2em] text-[#C7C9C7] uppercase mb-[20px] md:mb-[28px]"
             >
               Explore
             </h3>
-            <div className="flex flex-col font-sans" style={{ fontSize: "14px", fontWeight: 400, gap: "18px" }}>
+            <div className="flex flex-col font-sans gap-[16px] md:gap-[18px]" style={{ fontSize: "14px", fontWeight: 400 }}>
               {[
                 { label: "Home", href: "/" },
                 { label: "Spaces", href: "/spaces" },
@@ -203,12 +200,11 @@ export default function Footer() {
           {/* Column 3 (Contact) */}
           <div className="footer-col flex flex-col items-start text-left self-start">
             <h3 
-              className="font-sans text-[11px] font-bold tracking-[0.2em] text-[#C7C9C7] uppercase"
-              style={{ marginBottom: "28px" }}
+              className="font-sans text-[11px] font-bold tracking-[0.2em] text-[#C7C9C7] uppercase mb-[20px] md:mb-[28px]"
             >
               Contact
             </h3>
-            <div className="flex flex-col font-sans text-[13px] text-[#A9AFB5]" style={{ gap: "18px" }}>
+            <div className="flex flex-col font-sans text-[13px] text-[#A9AFB5] gap-[16px] md:gap-[18px]">
               <a
                 href="mailto:design@dcaves.in"
                 className="hover:text-[#F2F1ED] transition-colors duration-250 w-fit"
@@ -231,11 +227,9 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div 
-          className="footer-bottom-bar flex flex-col md:flex-row justify-between items-center w-full text-[12px] text-[#A9AFB5]"
+          className="footer-bottom-bar flex flex-col md:flex-row justify-between items-center w-full text-[12px] text-[#A9AFB5] mt-[40px] md:mt-[64px] pt-[24px] gap-y-[16px] md:gap-y-0"
           style={{
             borderTop: "1px solid rgba(255,255,255,0.18)",
-            marginTop: "64px",
-            paddingTop: "24px"
           }}
         >
           <span>&copy; 2026 DE'CAVES. ALL RIGHTS RESERVED.</span>
