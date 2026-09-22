@@ -206,10 +206,10 @@ export default function Footer() {
             </h3>
             <div className="flex flex-col font-sans text-[13px] text-[#A9AFB5] gap-[16px] md:gap-[18px]">
               <a
-                href="mailto:design@dcaves.in"
+                href="mailto:decavesbychittearchitects@gmail.com"
                 className="hover:text-[#F2F1ED] transition-colors duration-250 w-fit"
               >
-                design@dcaves.in
+                decavesbychittearchitects@gmail.com
               </a>
               <a
                 href="tel:+919898899133"

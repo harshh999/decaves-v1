@@ -184,7 +184,7 @@ Thank you.`;
                 <h3 className="mt-6 font-serif text-[28px] font-light italic text-brown-deep">Thank you</h3>
                 <p className="mt-3 max-w-[340px] text-[14px] leading-relaxed text-text-secondary">
                   We&rsquo;ve received your message and will get back to you within 24 hours. For anything urgent,
-                  write to us at design@dcaves.in.
+                  write to us at decavesbychittearchitects@gmail.com.
                 </p>
                 <button
                   type="button"

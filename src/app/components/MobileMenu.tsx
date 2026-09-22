@@ -77,10 +77,11 @@ export default function MobileMenu({
 
         <div className="space-y-4 border-t border-brown/10 pt-6">
           <a
-            href="mailto:design@dcaves.in"
-            className="block text-sm text-brown-dark transition-colors hover:text-brown-deep"
+            href="mailto:decavesbychittearchitects@gmail.com"
+            className="editorial-cta-link text-[#8B6F60] hover:text-[#352219] w-fit text-[14px]"
+            onClick={onClose}
           >
-            design@dcaves.in
+            decavesbychittearchitects@gmail.com
           </a>
           <p className="text-sm text-brown-dark">Hyderabad, India</p>
 
