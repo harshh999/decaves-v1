@@ -159,7 +159,8 @@ export const projects: Project[] = [
     title: "Cafe Lemon",
     location: "Khanpur, Vadodara",
     completion: "2025",
-    heroImage: "https://res.cloudinary.com/diqslwugu/image/upload/v1789575216/IMG_4864_uynrvi.png",
+    status: "Ongoing",
+    heroImage: "https://res.cloudinary.com/diqslwugu/image/upload/v1790602099/04850659-2b5f-4969-9981-7b1c715431c2.png",
     description:
       "A commercial hospitality space crafted with intention and character. Every detail—from the material palette to the ambient illumination—is designed to create an inviting, memorable environment.",
     interiorImages: [
